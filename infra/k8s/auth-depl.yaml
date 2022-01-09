@@ -15,6 +15,13 @@ spec:
       containers:
         - name: auth
           image: huyhoang1001/auth
+          env:
+            # Define the environment variable
+            - name: AUTH_MONGO_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: auth-config-env
+                  key: AUTH_MONGO_URL_TEST
 ---
 apiVersion: v1
 kind: Service

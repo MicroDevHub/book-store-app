@@ -1,0 +1,1 @@
+apiVersion: v1kind: ConfigMapmetadata:  name: auth-config-env  namespace: defaultdata:  AUTH_MONGO_URL_TEST: mongodb://auth-mongo-srv/auth
