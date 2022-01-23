@@ -1,0 +1,137 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is Auth Service API project",
+    "version": "1.0.0",
+    "title": "Auth Service API",
+    "contact": {
+      "email": "huyhoangvo1001@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "schemes": ["http", "https"],
+  "host": "auth-service.internal.com:3000",
+  "basePath": "/api/users",
+  "tags": [
+    {
+      "name": "Auth",
+      "description": "Everything about your authentication and authorization",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "auth-service.internal.com/api/users/*"
+      }
+    }
+  ],
+  "paths" : {
+    "/signup" : {
+      "post" : {
+        "tags": [
+          "Auth"
+        ],
+        "summary" : "Register a new user",
+        "description": "Create a new user in database",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "task object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/userResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/BadRequest"
+            }
+          }
+        }
+      }
+    },
+    "/signin" : {
+      "post" : {
+        "tags": [
+          "Auth"
+        ],
+        "summary" : "Login feature",
+        "description": "Sign in with credential have been signup",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "task object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/userResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/BadRequest"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "userResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "BadRequest": {
+      "type": "object",
+      "properties": {
+        "statusCode": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

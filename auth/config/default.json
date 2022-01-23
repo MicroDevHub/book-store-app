@@ -1,1 +1,1 @@
-{  "mongoUrl": "mongodb://127.0.0.1:27018/auth",  "port": 3000,  "jwt_ket": "hoang_key"}
+{  "mongoUrl": "mongodb://127.0.0.1:27017/auth",  "port": 3000,  "jwt_key": "hoang_key"}
