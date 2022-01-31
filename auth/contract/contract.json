@@ -99,7 +99,7 @@
       }
     },
     "/signout" : {
-      "get" : {
+      "post" : {
         "tags": [
           "Auth"
         ],
