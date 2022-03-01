@@ -1,0 +1,32 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is Book Service API project",
+    "version": "1.0.0",
+    "title": "Book Service API",
+    "contact": {
+      "email": "huyhoangvo1001@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "schemes": ["http", "https"],
+  "host": "book-service.internal.com:3000",
+  "basePath": "/api/books",
+  "tags": [
+    {
+      "name": "Book",
+      "description": "Everything about your CREATE, READ, UPDATE books",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "book-service.internal.com/api/books/*"
+      }
+    }
+  ],
+  "paths" : {
+  },
+  "definitions": {
+  }
+}

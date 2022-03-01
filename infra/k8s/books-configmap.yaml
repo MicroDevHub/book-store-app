@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: books-config-env
+  namespace: default
+data:
+  BOOKS_MONGO_URL: mongodb://books-mongo-srv/books-db
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: books-config-secret
+  namespace: default
+type: Opaque
+data:
+  JWT_KEY: YmFyCg==
+

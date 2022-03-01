@@ -16,6 +16,14 @@ build:
         manual:
           - src: "src/**/*.ts"
             dest: .
+    - image: huyhoang1001/books
+      context: books
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
     - image: huyhoang1001/client
       context: client
       docker:
@@ -24,3 +32,4 @@ build:
         manual:
           - src: "**/*.js"
             dest: .
+

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: books-mongo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: books-mongo
+  template:
+    metadata:
+      labels:
+        app: books-mongo
+    spec:
+      containers:
+        - name: books-mongo
+          image: mongo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: books-mongo-srv
+spec:
+  selector:
+    app: books-mongo
+  ports:
+    - name: db
+      protocol: TCP
+      port: 27017
+      targetPort: 27017
+
