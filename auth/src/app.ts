@@ -7,8 +7,10 @@ import { signinRouter } from './routes/signin';
 import { signupRouter } from './routes/signup';
 import { signoutRouter } from './routes/signout';
 import { currentuserRouter } from './routes/current-user';
-import { errorHandler } from './middlewares/error-handler';
-import { NotFoundError } from './errors/not-found-error';
+import {
+    errorHandler,
+    NotFoundError
+} from '@hh-bookstore/common';
 const swaggerDocument = require('../contract/contract.json');
 
 const app = express();

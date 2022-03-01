@@ -1,1 +1,0 @@
-{  "mongoUrl": "AUTH_MONGO_URL",  "port": "PORT",  "jwt_key": "JWT_KEY"}
