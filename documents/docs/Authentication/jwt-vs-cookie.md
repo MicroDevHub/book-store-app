@@ -1,7 +1,7 @@
 
 ## Authentication and Authorization in mircroservice
 
-## Section 1: Overview about Cookie and JWT ([this](./jwt-vs-cookie.md))
+**Section 1: Overview about Cookie and JWT** ([this](./jwt-vs-cookie.md))
 
 Section 2: Apply Authentication and Authorization into Auth-Service** ([this](./implement-auth-service.md))
 
