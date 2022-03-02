@@ -3,7 +3,7 @@
 This is small project about book store has been implemented microservice architecture with Nodejs 16.2 and React & NextJS.
 ## Features
 
-- Create CRUD book store web app with Angular and Nodejs.
+- Create CRUD book store web app with React, Next.js and Nodejs.
 - Implement Microservice with Nodejs.
 - Deployment with Docker, Kubernetes and Skaffold dev
 
