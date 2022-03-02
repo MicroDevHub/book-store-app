@@ -13,7 +13,8 @@ Section 2: Apply Authentication and Authorization into Auth-Service** ([this](./
 2. What is JWT ?
 3. Session Cookies vs. JSON Web tokens — The Approach
 4. Session Cookies vs. JSON Web tokens — Advantages and Disadvantages.
-5. Refer.
+5. How to Implement Secure, HTTPOnly Cookies in Node.js with Express
+6. Refer.
 
 ## 1. What is cookie
 
@@ -177,7 +178,12 @@ This also allows for a completely separate authentication server, that can be so
 Since JWT tokens cannot be “invalidated” (without maintaining them in a shared db), in JWT approach the logout length precision is set by the expiration length of the access_token. However the “access_token” lifespan can be kept short (typically 10 to 15 mins), so that tokens are automatically “invalidated” after the duration.
 Anti-pattern: Sometimes additional and unnecessary information is stored in the JWT. The JWT token should primarily contain user information, and the data authorized to be accessed by that user should be provisioned and managed as a separate service on that respective server.
 
-## 5. Refer
+
+## 5. How to Implement Secure, HTTPOnly Cookies in Node.js with Express
+
+https://cheatcode.co/tutorials/how-to-implement-secure-httponly-cookies-in-node-js-with-express
+
+## 6. Refer
 
 - https://hackernoon.com/using-session-cookies-vs-jwt-for-authentication-sd2v3vci
 - https://medium.com/@prashantramnyc/difference-between-session-cookies-vs-jwt-json-web-tokens-for-session-management-4be67d2f066e
