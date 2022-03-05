@@ -1,6 +1,6 @@
 {
   "name": "@hh-bookstore/common",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",

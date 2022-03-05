@@ -14,6 +14,10 @@ spec:
             backend:
               serviceName: auth-srv
               servicePort: 3000
+          - path: /api/books/?(.*)
+            backend:
+              serviceName: books-srv
+              servicePort: 3000
           - path: /?(.*)
             backend:
               serviceName: client-srv

@@ -76,6 +76,12 @@ What is Ingress?
 Ingress exposes HTTP and HTTPS routes from outside the cluster to services within the cluster. Traffic routing is controlled by rules defined on the Ingress resource.
 
 Here is a simple example where an Ingress sends all its traffic to one Service:
+![Ingress-ngix](documents/assets/infras/ingress.svg)
+
+An Ingress may be configured to give Services externally-reachable URLs, load balance traffic, terminate SSL / TLS, and offer name-based virtual hosting. 
+An Ingress controller is responsible for fulfilling the Ingress, usually with a load balancer, though it may also configure your edge router or additional frontends to help handle the traffic.
+
+
 ***
 
 ## Installation In Local
