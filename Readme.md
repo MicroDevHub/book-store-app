@@ -53,7 +53,7 @@ This service will receive request from client to handle authentication and autho
 
 ![alt text](documents/assets/auth-srv-api.png)
 
-Refer to [this link](documents/docs/Authentication/jwt-vs-cookie.md) to get more information about authentication and authorization of auth-service.
+Refer to [this link](documents/docs/authen-author/jwt-vs-cookie.md) to get more information about authentication and authorization of auth-service.
 
 ### 3. Database
 
