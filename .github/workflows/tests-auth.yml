@@ -1,10 +1,14 @@
-name: tests
+name: tests-auth
 
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'auth/**'
   pull_request:
     branches: [ main ]
+    paths:
+      - 'auth/**'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:

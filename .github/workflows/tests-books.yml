@@ -1,0 +1,23 @@
+name: tests-books
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'books/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'books/**'
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run a one-line script
+        run: cd books && npm install && npm run test:ci
