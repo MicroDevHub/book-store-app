@@ -1,1 +1,8 @@
-/auth/node_modules//client/.next//client/node_modules/common/build//common/node_modules//books/node_modules/node_modules
+/auth/node_modules/
+/client/.next/
+/client/node_modules
+/common/build/
+/common/node_modules/
+/books/node_modules/
+node_modules
+.idea/

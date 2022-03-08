@@ -1,9 +1,9 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "This is Book Service API project",
+    "description": "This is Books Service API project",
     "version": "1.0.0",
-    "title": "Book Service API",
+    "title": "Books Service API",
     "contact": {
       "email": "huyhoangvo1001@gmail.com"
     },
@@ -13,20 +13,134 @@
     }
   },
   "schemes": ["http", "https"],
-  "host": "book-service.internal.com:3000",
+  "host": "books-service.internal.com:3000",
   "basePath": "/api/books",
   "tags": [
     {
-      "name": "Book",
-      "description": "Everything about your CREATE, READ, UPDATE books",
+      "name": "Books",
+      "description": "Everything about your action on product",
       "externalDocs": {
         "description": "Find out more",
-        "url": "book-service.internal.com/api/books/*"
+        "url": "books-service.internal.com/api/users/*"
       }
     }
   ],
   "paths" : {
+    "/:id" : {
+      "get" : {
+        "tags": [
+          "Books"
+        ],
+        "summary" : "Get information of book by id",
+        "description": "Returns the book if the book is found",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "task object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Book"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/BookResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RequestError"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RequestError"
+            }
+          }
+        }
+      }
+    },
+    "/" : {
+      "get" : {
+        "tags": [
+          "Books"
+        ],
+        "summary" : "Get lists book",
+        "description": "Returns all lists books from database",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "responses": {
+          "201": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/UserResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RequestError"
+            }
+          }
+        }
+      }
+    }
   },
   "definitions": {
+    "BookResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "price": {
+          "type": "integer"
+        },
+        "userId": {
+          "type": "string"
+        }
+      }
+    },
+    "Book": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "price": {
+          "type": "integer"
+        },
+        "userId": {
+          "type": "string"
+        }
+      }
+    },
+    "RequestError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
