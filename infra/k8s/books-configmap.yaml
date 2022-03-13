@@ -5,6 +5,8 @@ metadata:
   namespace: default
 data:
   BOOKS_MONGO_URL: mongodb://books-mongo-srv/books-db
+  NATS_URL: http://nats-srv:4222
+  NATS_CLUSTER_ID: books
 ---
 apiVersion: v1
 kind: Secret

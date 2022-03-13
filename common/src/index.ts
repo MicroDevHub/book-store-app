@@ -11,7 +11,7 @@ import { requireAuth } from "./middlewares/require-auth";
 import { validateRequest } from "./middlewares/validate-request";
 
 import { Listener } from "./events/base-listener";
-import { Publish } from "./events/base-publisher";
+import { Publisher } from "./events/base-publisher";
 import { Subjects } from "./events/subjects";
 import { BookCreatedEvent } from "./events/book-created-event";
 import { BookUpdatedEvent } from "./events/book-updated-event";
@@ -30,7 +30,7 @@ export {
     validateRequest,
 
     Listener,
-    Publish,
+    Publisher,
     Subjects,
     BookCreatedEvent,
     BookUpdatedEvent

@@ -17,6 +17,20 @@ spec:
           image: huyhoang1001/books
           env:
             # Define the environment variable
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NATS_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: books-config-env
+                  key: NATS_URL
+            - name: NATS_CLUSTER_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: books-config-env
+                  key: NATS_CLUSTER_ID
             - name: BOOKS_MONGO_URL
               valueFrom:
                 configMapKeyRef:

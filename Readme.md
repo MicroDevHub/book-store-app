@@ -5,7 +5,7 @@ This is small project about book store has been implemented microservice archite
 
 - Create CRUD book store web app with React, Next.js and Nodejs.
 - Implement Microservice with Nodejs.
-- Deployment with Docker, Kubernetes and Skaffold dev
+- Deployment with Docker, Kubernetes and Skaffold dev.
 
 This is prototype for app
 ![alt text](documents/assets/prototype-bookstore.png)
@@ -14,14 +14,15 @@ This is prototype for app
 
 Blog web app uses a number of open source projects to work properly:
 
-- [React] - HTML enhanced for web apps!
-- [NextJS] - Server Side-Rendered!
-- [NodeJS] - Evented I/O for the backend
-- [Express] - Fast node.js network app framework
-- [MongoDB] - Database
-- [Typescript] - Strongly typed programming language that builds on JavaScript
-- [Kubernetes](https://kubernetes.io/vi/) - Open-source system for automating deployment, scaling, and management of containerized applications
-- [Skaffold] - Command line tool that facilitates continuous development for Kubernetes-native applications
+- [React] - A JavaScript library for building user interfaces!
+- [NextJS] - A flexible React framework that gives you building blocks to create fast web applications.
+- [NodeJS] - As an asynchronous event-driven JavaScript runtime, Node.js is designed to build scalable network applications.
+- [Express] - Fast node.js network app framework.
+- [MongoDB] - A document database with the scalability and flexibility that you want with the querying and indexing that you need.
+- [Typescript] - Strongly typed programming language that builds on JavaScript.
+- [Kubernetes](https://kubernetes.io/vi/) - Open-source system for automating deployment, scaling, and management of containerized applications.
+- [Skaffold] - Command line tool that facilitates continuous development for Kubernetes-native applications.
+- [NATS] - NATS is a connective technology that powers modern distributed systems.
 
 ***
 ## Introduce System
@@ -87,9 +88,9 @@ An Ingress controller is responsible for fulfilling the Ingress, usually with a 
 ## Installation In Local
 #### 1. Client
 
-##### - Running unit tests
+##### - Set up
 
-TBA
+Run `npm install`
 
 ##### - Running client
 Run `npm run dev`
@@ -102,7 +103,7 @@ Want to contribute? Great!
 
 Bookstore app uses Docker + Kubernetes  + Skaffold for fast developing.
 Make a change in your file and instantaneously see your updates!
-This is all step to setup and deploy this project on Kubernetes.
+This is all step to set up and deploy this project on Kubernetes.
 
 First step:
 

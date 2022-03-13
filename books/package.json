@@ -7,6 +7,11 @@
     "test": "jest --watchAll --no-cache --detectOpenHandles",
     "test:ci": "jest"
   },
+  "config": {
+    "mongodbMemoryServer": {
+      "version": "latest"
+    }
+  },
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node",
@@ -15,7 +20,7 @@
     ]
   },
   "dependencies": {
-    "@hh-bookstore/common": "^1.0.9",
+    "@hh-bookstore/common": "^1.0.12",
     "@types/config": "^0.0.41",
     "@types/cookie-session": "^2.0.44",
     "@types/express": "^4.17.13",
@@ -39,7 +44,7 @@
   "devDependencies": {
     "@types/supertest": "^2.0.11",
     "jest": "^27.4.7",
-    "mongodb-memory-server": "^8.2.0",
+    "mongodb-memory-server": "^8.4.0",
     "supertest": "^6.2.2",
     "ts-jest": "^27.1.3"
   }

@@ -5,7 +5,7 @@ import cookieSession from 'cookie-session';
 import { createBookRouter } from './routes/create';
 import { indexBookRouter } from './routes/index';
 import { getBookRouter } from './routes/get';
-import { updateTicketRouter } from './routes/update';
+import { updateBookRouter } from './routes/update';
 
 import {
     errorHandler,
@@ -28,7 +28,7 @@ app.use(currentUser);
 app.use(createBookRouter);
 app.use(indexBookRouter);
 app.use(getBookRouter);
-app.use(updateTicketRouter);
+app.use(updateBookRouter);
 
 app.use(
     "/docs",
