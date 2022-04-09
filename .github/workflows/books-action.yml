@@ -13,11 +13,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  Books-Servicec:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Run a one-line script
+      - name: Build and Unit Testing
         run: cd books && npm install && npm run test:ci

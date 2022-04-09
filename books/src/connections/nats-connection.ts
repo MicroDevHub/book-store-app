@@ -1,6 +1,6 @@
 import { natsClient } from './nats-client';
 import { NatsConfig } from '../types/nats';
-import config from "config";
+import config from 'config';
 
 export class NatsConnection {
 

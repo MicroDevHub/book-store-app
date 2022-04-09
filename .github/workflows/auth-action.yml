@@ -16,7 +16,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  Auth-Service:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -29,8 +29,8 @@ jobs:
       - name: Service-build
         run: cd auth && npm install
 
-      - name: Unit testing
-        run: npm run test:ci
+      - name: Eslint && Unit testing
+        run: cd auth && npm run eslint && npm run test:ci
 
       # Runs a set of commands using the runners shell
 #      - name: Run a multi-line script

@@ -5,7 +5,8 @@
   "scripts": {
     "start": "ts-node-dev src/index.ts",
     "test": "jest --watchAll --no-cache --detectOpenHandles",
-    "test:ci": "jest"
+    "test:ci": "jest",
+    "eslint": "eslint ./src/** -c .eslintrc.json"
   },
   "jest": {
     "preset": "ts-jest",
@@ -38,6 +39,9 @@
   "description": "",
   "devDependencies": {
     "@types/supertest": "^2.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.18.0",
+    "@typescript-eslint/parser": "^5.18.0",
+    "eslint": "^7.32.0",
     "jest": "^27.4.7",
     "mongodb-memory-server": "^8.2.0",
     "supertest": "^6.2.2",
