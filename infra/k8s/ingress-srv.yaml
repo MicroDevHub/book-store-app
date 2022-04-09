@@ -1,24 +1,33 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-service
   annotations:
     kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/use-regex: 'true'
+    nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   rules:
     - host: bookstore.com
       http:
         paths:
           - path: /api/users/?(.*)
+            pathType: Prefix
             backend:
-              serviceName: auth-srv
-              servicePort: 3000
-          - path: /api/books/?(.*)
+              service:
+                name: auth-srv
+                port:
+                  number: 3000
+          - path: /api/tickets/?(.*)
+            pathType: Prefix
             backend:
-              serviceName: books-srv
-              servicePort: 3000
+              service:
+                name: books-srv
+                port:
+                  number: 3000
           - path: /?(.*)
+            pathType: Prefix
             backend:
-              serviceName: client-srv
-              servicePort: 3000
+              service:
+                name: client-srv
+                port:
+                  number: 3000
