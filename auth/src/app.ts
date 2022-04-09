@@ -11,6 +11,7 @@ import {
     errorHandler,
     NotFoundError
 } from '@hh-bookstore/common';
+/* eslint-disable */
 const swaggerDocument = require('../contract/contract.json');
 
 const app = express();
@@ -28,11 +29,11 @@ app.use(signinRouter);
 app.use(signupRouter);
 app.use(signoutRouter);
 app.use(
-    "/docs",
+    '/docs',
     swaggerUi.serve,
     swaggerUi.setup(swaggerDocument));
 
-app.all('*',  (req, res) => {
+app.all('*',  () => {
     throw new NotFoundError();
 });
 app.use(errorHandler);
