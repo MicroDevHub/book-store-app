@@ -6,7 +6,8 @@
     "start": "ts-node-dev src/index.ts",
     "test": "jest --watchAll --no-cache --detectOpenHandles",
     "test:ci": "jest",
-    "eslint": "eslint ./src/** -c .eslintrc.json"
+    "eslint": "eslint ./src/**",
+    "eslint:ci": "eslint ./src/** -c ${{ github.repository }}/.eslintrc.json "
   },
   "jest": {
     "preset": "ts-jest",
