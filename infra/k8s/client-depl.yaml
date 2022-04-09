@@ -15,6 +15,14 @@ spec:
       containers:
         - name: client
           image: huyhoang1001/client
+          env:
+            # Define the environment variable
+            - name: INGRESS_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: client-config-env
+                  key: INGRESS_URL
+
 ---
 apiVersion: v1
 kind: Service

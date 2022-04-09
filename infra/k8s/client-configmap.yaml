@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: client-config-env
+  namespace: default
+data:
+  INGRESS_URL: http://ingress-nginx-controller.ingress-nginx.svc.cluster.local
