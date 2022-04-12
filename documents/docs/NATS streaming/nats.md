@@ -5,9 +5,6 @@
 ## Table of contents
 
 1. What is Nats Streaming?
-2. Implement
-3. Clarifying Swagger vs OpenAPI
-4. Refer
 
 ## 1. What is Nats Streaming
 
@@ -46,11 +43,3 @@ Data is encoded and framed as a message and sent by a publisher. The message is 
 
 With this simple design, NATS lets programs share common message-handling code, isolate resources and interdependencies, and scale by easily handling an increase in message volume, whether those are service requests or stream data.
 
-## 3. What is Swagger?
-
-
-
-## 4. Let's start with clarifying Swagger vs OpenAPI
-
-## 5. Refer:
-- https://swagger.io/resources/articles/adopting-an-api-first-approach/

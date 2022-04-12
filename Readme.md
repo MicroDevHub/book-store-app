@@ -12,7 +12,7 @@ This is prototype for app
 
 ## Tech
 
-Blog web app uses a number of open source projects to work properly:
+Bookstore app uses a number of open source projects to work properly:
 
 - [React] - A JavaScript library for building user interfaces!
 - [NextJS] - A flexible React framework that gives you building blocks to create fast web applications.
@@ -23,6 +23,7 @@ Blog web app uses a number of open source projects to work properly:
 - [Kubernetes](https://kubernetes.io/vi/) - Open-source system for automating deployment, scaling, and management of containerized applications.
 - [Skaffold] - Command line tool that facilitates continuous development for Kubernetes-native applications.
 - [NATS] - NATS is a connective technology that powers modern distributed systems.
+- [GitHub-Action] - Implementing CI/CD with GitHub Actions
 
 ***
 ## Introduce System
@@ -50,7 +51,7 @@ Describe services:
 ![alt text](documents/assets/services.png)
 
 ##### service-auth
-This service will receive request from client to handle authentication and authorization for user. 
+This service will receive request from client to handle authentication and authorization for user [Readme-Auth](auth/Readme.md). 
 
 ![alt text](documents/assets/auth-srv-api.png)
 

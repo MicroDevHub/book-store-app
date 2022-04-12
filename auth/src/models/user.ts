@@ -53,6 +53,6 @@ userSchema.pre('save', async function(done) {
     done();
 });
 
-const User = mongoose.model<UserDoc, UserModel>('SuspiciousActivity', userSchema);
+const User = mongoose.model<UserDoc, UserModel>('User', userSchema);
 
 export { User };

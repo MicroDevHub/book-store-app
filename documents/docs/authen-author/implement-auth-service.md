@@ -31,7 +31,7 @@ Conclusion:
 
 - Must have a built-in, tamper-resistant way to expire or invalidate itself
 
-- Must be easily undertood betwwen different languages.
+- Must be easily understood between different languages.
 
 - Must not require some kind of backing data store on the server
 
@@ -46,13 +46,13 @@ With the SSR we need to know auth info with the first request, but the first req
 
 ## 2. Solution and Implement.
 
-SO for this case we will use a customize authentication and authorization with JWT and Cookie. This option can cover all the requirements, which we have listed above.
+So for this case we will use customize authentication and authorization with JWT and Cookie. This option can cover all the requirements, which we have listed above.
 
 Here is the flow SignIn for this apply
 
 ![solution-sigin-flow](../../assets/auth/solution-sigin-flow.png)
 
-And when the first request incomming when can check it easy way:
+And when the first request incoming when can check it easy way:
 
 ![solution-first-request](../../assets/auth/solution-first-request.png)
 
