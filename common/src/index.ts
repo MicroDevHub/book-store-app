@@ -15,6 +15,7 @@ import { Publisher } from "./events/base-publisher";
 import { Subjects } from "./events/subjects";
 import { BookCreatedEvent } from "./events/book-created-event";
 import { BookUpdatedEvent } from "./events/book-updated-event";
+import Logger from "./lib/logger";
 
 export {
     BadRequestError,
@@ -33,6 +34,7 @@ export {
     Publisher,
     Subjects,
     BookCreatedEvent,
-    BookUpdatedEvent
+    BookUpdatedEvent,
+    Logger
 }
 
