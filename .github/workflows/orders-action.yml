@@ -1,23 +1,23 @@
-name: tests-order-service
+name: tests-orders-service
 
 on:
   push:
     branches: [ main ]
     paths:
-      - 'books/**'
+      - 'orders/**'
   pull_request:
     branches: [ main ]
     paths:
-      - 'books/**'
+      - 'orders/**'
 
   workflow_dispatch:
 
 jobs:
-  Books-Servicec:
+  Orders-Service:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
 
       - name: Build and Unit Testing
-        run: cd order && npm install && npm run test:ci
+        run: cd orders && npm install && npm run test:ci

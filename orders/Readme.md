@@ -1,6 +1,6 @@
 # Order-Service
 
-This service will receive request from client to handle order list for user.
+This service will handle order list for user.
 
 ## Installation
 
