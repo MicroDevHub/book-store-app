@@ -1,17 +1,17 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: books-config-env
+  name: orders-config-env
   namespace: default
 data:
-  BOOKS_MONGO_URL: mongodb://books-mongo-srv/books-db
+  ORDERS_MONGO_URL: mongodb://orders-mongo-srv/orders-db
   NATS_URL: http://nats-srv:4222
   NATS_CLUSTER_ID: bookstore
 ---
 apiVersion: v1
 kind: Secret
 metadata:
-  name: books-config-secret
+  name: orders-config-secret
   namespace: default
 type: Opaque
 data:

@@ -1,0 +1,1 @@
+{  "mongoUrl": "ORDERS_MONGO_URL",  "port": "PORT",  "jwt_key": "JWT_KEY",  "natsConfig": {    "clusterId": "NATS_CLUSTER_ID",    "clientId": "NATS_CLIENT_ID",    "url": "NATS_URL"  }}

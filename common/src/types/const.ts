@@ -12,4 +12,4 @@ export enum colors {
     info = 'green',
     http = 'magenta',
     debug = 'white',
-};
+}
