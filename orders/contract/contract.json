@@ -1,0 +1,146 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is Orders Service API project",
+    "version": "1.0.0",
+    "title": "Orders Service API",
+    "contact": {
+      "email": "huyhoangvo1001@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "schemes": ["http", "https"],
+  "host": "orders-service.internal.com:3000",
+  "basePath": "/api/orders",
+  "tags": [
+    {
+      "name": "Orders",
+      "description": "Everything about your action on product",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "orders-service.internal.com/api/orders/*"
+      }
+    }
+  ],
+  "paths" : {
+    "/:orderId" : {
+      "get" : {
+        "tags": [
+          "Orders"
+        ],
+        "summary" : "Get list order belong to userId",
+        "description": "Returns the orders if the orders is found and user is authorised",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "task object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/BookResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RequestError"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RequestError"
+            }
+          }
+        }
+      }
+    },
+    "/" : {
+      "get" : {
+        "tags": [
+          "Orders"
+        ],
+        "summary" : "Get lists book",
+        "description": "Returns all lists orders from database",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "responses": {
+          "201": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/UserResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RequestError"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "OrderResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "price": {
+          "type": "integer"
+        },
+        "userId": {
+          "type": "string"
+        }
+      }
+    },
+    "Order": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer"
+        },
+        "expiresAt": {
+          "type": "date"
+        }
+      }
+    },
+    "RequestError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
