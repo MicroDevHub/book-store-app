@@ -19,5 +19,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build and Unit Testing
-        run: cd orders && npm install && npm run test:ci
+      - name: Service-build
+        run: cd orders && npm install
+
+      - name: Unit testing
+        run: cd orders && npm run test:ci

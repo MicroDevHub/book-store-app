@@ -7,11 +7,6 @@
     "test": "jest --watchAll --no-cache --detectOpenHandles",
     "test:ci": "jest"
   },
-  "config": {
-    "mongodbMemoryServer": {
-      "version": "latest"
-    }
-  },
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node",
@@ -44,8 +39,8 @@
   "devDependencies": {
     "@types/supertest": "^2.0.11",
     "jest": "^27.4.7",
-    "mongodb-memory-server": "^8.4.0",
-    "supertest": "^6.2.2",
+    "mongodb-memory-server": "^8.2.0",
+    "supertest": "^6.2.3",
     "ts-jest": "^27.1.3"
   }
 }

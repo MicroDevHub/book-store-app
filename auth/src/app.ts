@@ -11,6 +11,7 @@ import {
     errorHandler,
     NotFoundError
 } from '@hh-bookstore/common';
+
 /* eslint-disable */
 const swaggerDocument = require('../contract/contract.json');
 

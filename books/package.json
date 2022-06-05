@@ -7,11 +7,6 @@
     "test": "jest --watchAll --no-cache --detectOpenHandles",
     "test:ci": "jest"
   },
-  "config": {
-    "mongodbMemoryServer": {
-      "version": "latest"
-    }
-  },
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node",
