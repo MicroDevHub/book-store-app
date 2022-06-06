@@ -19,5 +19,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build and Unit Testing
-        run: cd books && npm install && npm run test:ci
+      - name: Build
+        run: cd books && npm install
+
+      - name: Eslint && Unit testing
+        run: cd books && npm run eslint && npm run test:ci

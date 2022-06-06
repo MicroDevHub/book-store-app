@@ -6,7 +6,7 @@
     "start": "ts-node-dev src/index.ts",
     "test": "jest --watchAll --no-cache --detectOpenHandles",
     "test:ci": "jest",
-    "eslint": "eslint --fix ./src/** -c .eslintrc.json"
+    "eslint": "eslint --fix src/** -c .eslintrc.json --no-error-on-unmatched-pattern"
   },
   "jest": {
     "preset": "ts-jest",
@@ -16,7 +16,7 @@
     ]
   },
   "dependencies": {
-    "@hh-bookstore/common": "^1.0.12",
+    "@hh-bookstore/common": "^1.0.69",
     "@types/config": "^0.0.41",
     "@types/cookie-session": "^2.0.44",
     "@types/express": "^4.17.13",
