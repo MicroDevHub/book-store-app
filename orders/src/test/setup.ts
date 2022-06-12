@@ -3,8 +3,6 @@ import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
 import config from 'config';
 
-jest.setTimeout(10000);
-
 declare global {
     var getCookie: () => string[];
 }
@@ -23,11 +21,12 @@ beforeAll(async () => {
 });
 
 beforeEach(async () => {
-    jest.useFakeTimers('legacy');
+    // jest.useFakeTimers('legacy');
     const collections = await mongoose.connection.db.collections();
-
-    for (let collection of collections) {
-        await collection.deleteMany({});
+    if (collections && collections.length > 0) {
+        for (let collection of collections) {
+            await collection.deleteMany({});
+        }
     }
 });
 
