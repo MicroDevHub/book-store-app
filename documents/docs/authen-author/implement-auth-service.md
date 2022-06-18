@@ -1,9 +1,9 @@
 
 ## Authentication and Authorization in microservice
 
-Section 1: Overview about Cookie and JWT ([this](./jwt-vs-cookie.md))
+[Section 1: Overview about Cookie and JWT](./jwt-vs-cookie.md)
 
-**Section 2: Apply Authentication and Authorization into Auth-Service** ([this](./implement-auth-service.md))
+[**Section 2: Apply Authentication and Authorization into Auth-Service**](./implement-auth-service.md)
 
 # Section 2: Apply Authentication and Authorization into Auth-Service
 
@@ -46,7 +46,7 @@ With the SSR we need to know auth info with the first request, but the first req
 
 ## 2. Solution and Implement.
 
-So for this case we will use customize authentication and authorization with JWT and Cookie. This option can cover all the requirements, which we have listed above.
+So for this case we will use a customize authentication and authorization with JWT and Cookie. This option can cover all the requirements, which we have listed above.
 
 Here is the flow SignIn for this apply
 

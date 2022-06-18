@@ -14,16 +14,16 @@ This is prototype for app
 
 Bookstore app uses a number of open source projects to work properly:
 
-- [React] - A JavaScript library for building user interfaces!
-- [NextJS] - A flexible React framework that gives you building blocks to create fast web applications.
-- [NodeJS] - As an asynchronous event-driven JavaScript runtime, Node.js is designed to build scalable network applications.
-- [Express] - Fast node.js network app framework.
-- [MongoDB] - A document database with the scalability and flexibility that you want with the querying and indexing that you need.
-- [Typescript] - Strongly typed programming language that builds on JavaScript.
+- [React](https://reactjs.org/) - A JavaScript library for building user interfaces!
+- [NextJS](https://nextjs.org/) - A flexible React framework that gives you building blocks to create fast web applications.
+- [NodeJS](https://nodejs.dev/) - As an asynchronous event-driven JavaScript runtime, Node.js is designed to build scalable network applications.
+- [Express](https://expressjs.com/) - Fast node.js network app framework.
+- [MongoDB](https://www.mongodb.com/) - A document database with the scalability and flexibility that you want with the querying and indexing that you need.
+- [Typescript](https://www.typescriptlang.org/) - Strongly typed programming language that builds on JavaScript.
 - [Kubernetes](https://kubernetes.io/vi/) - Open-source system for automating deployment, scaling, and management of containerized applications.
-- [Skaffold] - Command line tool that facilitates continuous development for Kubernetes-native applications.
-- [NATS] - NATS is a connective technology that powers modern distributed systems.
-- [GitHub-Action] - Implementing CI/CD with GitHub Actions
+- [Skaffold](https://skaffold.dev/) - Command line tool that facilitates continuous development for Kubernetes-native applications.
+- [NATS](https://docs.nats.io/) - NATS is a connective technology that powers modern distributed systems.
+- [GitHub-Action](https://github.com/features/actions) - Implementing CI/CD with GitHub Actions
 
 ***
 ## Introduce System
@@ -83,20 +83,6 @@ Here is a simple example where an Ingress sends all its traffic to one Service:
 An Ingress may be configured to give Services externally-reachable URLs, load balance traffic, terminate SSL / TLS, and offer name-based virtual hosting. 
 An Ingress controller is responsible for fulfilling the Ingress, usually with a load balancer, though it may also configure your edge router or additional frontends to help handle the traffic.
 
-
-***
-
-## Installation In Local
-#### 1. Client
-
-##### - Set up
-
-Run `npm install`
-
-##### - Running client
-Run `npm run dev`
-
-
 ***
 ## Development
 
@@ -142,4 +128,12 @@ your preferred browser.
 bookstore.com
 ```
 
+***
+## Documents
 
+#### 1. [Authentication & Authorization In Microservice](./documents/docs/authen-author/jwt-vs-cookie.md)
+#### 2. [Continuous integration and continuous delivery](./documents/docs/CI_CD/overview.md)
+#### 3. [Error handling in microservice](./documents/docs/error-handler/error-handler.md)
+#### 4. [Event Bus In Microservice with NATS streaming](./documents/docs/NATS/nats-1.md)
+#### 5. [Open API specification and Swagger](./documents/docs/swagger/swagger-1-openAPI.md)
+#### 6. [Testing in microservices](./documents/docs/testing/Testing-Microservices-1.md)

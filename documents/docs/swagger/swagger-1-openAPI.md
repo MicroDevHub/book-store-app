@@ -1,10 +1,10 @@
 ![OpenAPI-Swagger](../../assets/OpenAPI-Swagger.png)
 
-## Express ES2017 REST API Boilerplate - Swagger module
+## Swagger module
 
-**Section 1: Overview about Open API specification and Swagger** ([this](./swagger-1-overview.md))
+[**Section 1: Overview about Open API specification and Swagger**](./swagger-1-overview.md)
 
-Section 2: Open API specification ([this](./swagger-2-openAPI.md))
+[Section 2: Open API specification](./swagger-2-openAPI.md)
 
 # Sections 1: Overview about open API specification and Swagger
 
@@ -14,7 +14,7 @@ Section 2: Open API specification ([this](./swagger-2-openAPI.md))
 2. What is OpenAPI?
 3. What is Swagger?
 4. Clarifying Swagger vs OpenAPI
-5. Refer
+5. References.
 
 ## 1. API first approach
 
@@ -72,7 +72,7 @@ These tools include:
 Since the Swagger tools were developed by the team involved in the creation of the original Swagger Specification, the tools are often still viewed as being synonymous with the spec. But the Swagger tools are not the only tools that are available for implementing the OpenAPI Specification. There are a wide variety of API design, documentation, testing, management, and monitoring solutions that support version 2.0 of the specification, and are actively working on adding 3.0 support.
 
 
-## 5. Refer:
+## 5. References:
 - https://swagger.io/resources/articles/adopting-an-api-first-approach/
 - https://swagger.io/docs/specification/about/
 - https://www.cvsimply.com/

@@ -1,9 +1,9 @@
 
-## Authentication and Authorization in mircroservice
+## Authentication & Authorization In Microservice
 
-**Section 1: Overview about Cookie and JWT** ([this](./jwt-vs-cookie.md))
+[**Section 1: Overview about Cookie and JWT**](./jwt-vs-cookie.md)
 
-Section 2: Apply Authentication and Authorization into Auth-Service ([this](./implement-auth-service.md))
+[Section 2: Apply Authentication and Authorization into Auth-Service](./implement-auth-service.md)
 
 # Section 1: Overview about Cookie and JWT
 
