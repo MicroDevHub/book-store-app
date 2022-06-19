@@ -50,16 +50,16 @@ Describe services:
 
 ![alt text](documents/assets/services.png)
 
-##### auth-service
-This service will receive request from client to handle authentication and authorization for user [Readme-Auth](auth/Readme.md). 
-
-##### order-service
-This service will handle order creation and editing. [Readme-Order](orders/Readme.md).
-
+#### auth-service
+This service will receive request from client to handle authentication and authorization for user [Readme-Auth](auth/Readme.md).
+Refer to [this link](documents/docs/authen-author/jwt-vs-cookie.md) to get more information about authentication and authorization of auth-service.
 
 ![alt text](documents/assets/auth-srv-api.png)
 
-Refer to [this link](documents/docs/authen-author/jwt-vs-cookie.md) to get more information about authentication and authorization of auth-service.
+#### order-service
+This service will handle order creation and editing. [Readme-Order](orders/Readme.md).
+![alt text](documents/assets/orders/routes.png)
+
 
 ### 3. Database
 

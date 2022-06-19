@@ -1,7 +1,8 @@
 {
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
+        "jest": true
     },
     "extends": [
         "standard",
@@ -19,8 +20,5 @@
         "quotes": ["error", "double"],
         "semi": ["error", "always"],
         "indent": ["error", 4]
-    },
-    "env": {
-        "jest": true
     }
 }
