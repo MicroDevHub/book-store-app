@@ -50,8 +50,12 @@ Describe services:
 
 ![alt text](documents/assets/services.png)
 
-##### service-auth
+##### auth-service
 This service will receive request from client to handle authentication and authorization for user [Readme-Auth](auth/Readme.md). 
+
+##### order-service
+This service will handle order creation and editing. [Readme-Order](orders/Readme.md).
+
 
 ![alt text](documents/assets/auth-srv-api.png)
 

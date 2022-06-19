@@ -1,21 +1,23 @@
-import express from 'express';
-import { json } from 'body-parser';
-import swaggerUi from 'swagger-ui-express';
-import cookieSession from 'cookie-session';
-import { createOrderRouter } from './routes/create';
-import { indexOrderRouter } from './routes/index';
-import { getOrderRouter } from './routes/get';
-import { deleteOrderRouter } from './routes/delete';
+import express from "express";
+import { json } from "body-parser";
+import swaggerUi from "swagger-ui-express";
+import cookieSession from "cookie-session";
+import { createOrderRouter } from "./routes/create";
+import { indexOrderRouter } from "./routes/index";
+import { getOrderRouter } from "./routes/get";
+import { deleteOrderRouter } from "./routes/delete";
 
 import {
     errorHandler,
     NotFoundError,
     currentUser
-} from '@hh-bookstore/common';
-const swaggerDocument = require('../contract/contract.json');
+} from "@hh-bookstore/common";
+
+/* eslint-disable @typescript-eslint/no-var-requires */
+const swaggerDocument = require("../contract/contract.json");
 
 const app = express();
-app.set('trust proxy', true);
+app.set("trust proxy", true);
 app.use(json());
 app.use(
     cookieSession({
@@ -35,7 +37,7 @@ app.use(
     swaggerUi.serve,
     swaggerUi.setup(swaggerDocument));
 
-app.all('*',  (req, res) => {
+app.all("*",  () => {
     throw new NotFoundError();
 });
 app.use(errorHandler);

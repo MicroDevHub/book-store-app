@@ -6,9 +6,9 @@ interface Event {
     data: any
 }
 
-// Listener<T extends Event> this one it mean that whenever we tried to make use of a listener in any way,
+// Listener<T extends Event> this one it means that whenever we tried to make use of a listener in any way,
 // so in the other words, whenever we tried to extend it, we're going to have to provide some custom type to this.
-// genetic type can be throught of as like an argument for types. So we can refer type <T> everywhere inside of 
+// genetic type can be through of as like an argument for types. So we can refer type <T> everywhere inside
 // this our class definition 
 
 export abstract class Listener<T extends Event> {
@@ -16,7 +16,7 @@ export abstract class Listener<T extends Event> {
     abstract subject: T['subject'];
     // Name of queue group this listener will join
     abstract queueGroupName: string;
-    // Funtion to run when a message is recevied
+    // Function to run when a message is received
     abstract onMessage(data: T['data'], msg: Message): void;
   
     // Pre-initialized NATS client
@@ -40,7 +40,6 @@ export abstract class Listener<T extends Event> {
     }
     
     listen() {
-      console.log('test')
       const subscription = this.client.subscribe(
         this.subject,
         this.queueGroupName,

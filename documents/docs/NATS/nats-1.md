@@ -2,7 +2,7 @@
 
 [**Sections 1: NATS Streaming**](./nats-1.md)
 
-[Sections 2: Implement NATS Streaming In Microservice System](./jwt-vs-cookie.md)
+[Sections 2: Implement NATS Streaming In Microservice System](./nats-2.md)
 
 ## Table of contents
 

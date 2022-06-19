@@ -9,6 +9,7 @@
 1. Requirements for Event Bus in Microservice.
 2. Solution and Implement.
 3. List events will be used in the system.
+4. Resolve concurrent event listener from multi instance of service. 
 
 ### 1. Requirements for Event Bus in Microservice
 
@@ -17,6 +18,7 @@
 
 ***
 ### 3. List of events will be used in the system.
+Events Published In Each Service
 
 ![order_created-event](../../assets/events/order_created-event.png)
 
