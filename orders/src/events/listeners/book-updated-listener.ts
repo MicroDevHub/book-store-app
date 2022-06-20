@@ -8,7 +8,8 @@ export class BookUpdatedListener extends Listener<BookUpdatedEvent> {
     queueGroupName: string = config.get("natsConfig.queueGroupName");
 
     async onMessage(data: BookUpdatedEvent["data"], msg: Message): Promise<void> {
-        const book = await Book.findById(data.id);
+        const book = await Book.findByIdAndPreviousVersion(data);
+
         if (!book) {
             throw new Error("Book not found");
         }

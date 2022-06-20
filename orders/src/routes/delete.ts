@@ -23,6 +23,7 @@ router.delete("/api/orders/:orderId", requireAuth, async (req: Request, res:Resp
 
     await new OrderCancelledPublisher(natsClient.client).publish({
         id: order.id,
+        version: order.version,
         book: {
             id: order.book.id,
         },

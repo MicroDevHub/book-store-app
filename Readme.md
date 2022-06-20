@@ -92,7 +92,7 @@ An Ingress controller is responsible for fulfilling the Ingress, usually with a 
 
 Want to contribute? Great!
 
-Bookstore app uses Docker + Kubernetes  + Skaffold for fast developing.
+Bookstore app uses Docker + Kubernetes + Skaffold for fast developing.
 Make a change in your file and instantaneously see your updates!
 This is all step to set up and deploy this project on Kubernetes.
 

@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { Order } from "./order";
 import { OrderStatus } from "@hh-bookstore/common";
+import { updateIfCurrentPlugin } from "mongoose-update-if-current";
 
 interface BookAttrs {
     id: string;
@@ -11,11 +12,16 @@ interface BookAttrs {
 export interface BookDoc extends mongoose.Document {
     title: string;
     price: number;
+    version: number;
     isReserved(): Promise<boolean>;
 }
 
 interface BookModel extends mongoose.Model<BookDoc> {
     build(attrs: BookAttrs): BookDoc;
+    findByIdAndPreviousVersion(event: {
+        id: string,
+        version: number
+    }): Promise<BookDoc | null>;
 }
 
 const bookSchema = new mongoose.Schema(
@@ -47,6 +53,19 @@ bookSchema.statics.build = (attrs: BookAttrs) => {
         price: attrs.price,
     });
 };
+
+bookSchema.statics.findByIdAndPreviousVersion = async (event: {
+    id: string,
+    version: number
+}) => {
+    return await Book.findOne({
+        _id: event.id,
+        version: event.version - 1,
+    });
+};
+
+bookSchema.set("versionKey", "version");
+bookSchema.plugin(updateIfCurrentPlugin);
 
 bookSchema.methods.isReserved = async function() {
     // Run query to look at all orders. Find an orders where the book

@@ -63,6 +63,7 @@ router.post(
             // Publish an event saying that an orders was created
             await new OrderCreatedPublisher(natsClient.client).publish({
                 id: order.id,
+                version: order.version,
                 status: order.status,
                 userId: order.userId,
                 expiresAt: order.expiresAt.toISOString(),
