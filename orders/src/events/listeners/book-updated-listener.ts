@@ -14,10 +14,11 @@ export class BookUpdatedListener extends Listener<BookUpdatedEvent> {
             throw new Error("Book not found");
         }
 
-        const { title, price } = data;
+        const { title, price, version } = data;
         await book.set({
             title,
             price,
+            version,
         });
 
         await book.save();

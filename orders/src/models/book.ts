@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 import { Order } from "./order";
 import { OrderStatus } from "@hh-bookstore/common";
-import { updateIfCurrentPlugin } from "mongoose-update-if-current";
 
 interface BookAttrs {
     id: string;
@@ -65,7 +64,15 @@ bookSchema.statics.findByIdAndPreviousVersion = async (event: {
 };
 
 bookSchema.set("versionKey", "version");
-bookSchema.plugin(updateIfCurrentPlugin);
+bookSchema.pre("save", function(done) {
+    // this operator will tell mongoose find the previous version of document
+    // before saving a new document
+    this.$where = {
+        version: this.get("version") - 1
+    };
+
+    done();
+})
 
 bookSchema.methods.isReserved = async function() {
     // Run query to look at all orders. Find an orders where the book
