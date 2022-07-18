@@ -1,6 +1,7 @@
 import express, { NextFunction, Request, Response } from "express";
 import { body } from "express-validator";
 import mongoose from "mongoose";
+import config from "config";
 import {
     requireAuth,
     validateRequest,
@@ -12,8 +13,6 @@ import { natsClient } from "../connections/nats-client";
 import { OrderCreatedPublisher } from "../events/publishers/order-created-publisher";
 import { Book } from "../models/book";
 import { Order } from "../models/order";
-
-const EXPIRATION_WINDOW_SECONDS = 15 * 60;
 
 const router = express.Router();
 
@@ -48,6 +47,7 @@ router.post(
 
             // Calculate an expiration date for this orders
             const expiration = new Date();
+            const EXPIRATION_WINDOW_SECONDS = parseInt(config.get("expiration_window_seconds"), 10) * 60;
             expiration.setSeconds(expiration.getSeconds() + EXPIRATION_WINDOW_SECONDS);
 
             // Build the orders and save it to the database

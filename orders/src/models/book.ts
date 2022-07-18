@@ -50,6 +50,7 @@ bookSchema.statics.build = (attrs: BookAttrs) => {
         _id: attrs.id,
         title: attrs.title,
         price: attrs.price,
+        version: 0,
     });
 };
 

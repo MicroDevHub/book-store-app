@@ -50,8 +50,21 @@ const OrderSchema = new mongoose.Schema(
     }
 );
 
+OrderSchema.statics.findByIdAndPreviousVersion = async (event: {
+    id: string,
+    version: number
+}) => {
+    return await Order.findOne({
+        _id: event.id,
+        version: event.version - 1,
+    });
+};
+
 OrderSchema.statics.build = (attrs: OrderAttrs) => {
-    return new Order(attrs);
+    return new Order({
+        ...attrs,
+        version: 0,
+    });
 };
 
 const Order = mongoose.model<OrderDoc, OrderModel>("Order", OrderSchema);
