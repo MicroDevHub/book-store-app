@@ -21,7 +21,7 @@ describe("Book model", () => {
         secondInstance!.set({ price: 15 });
 
         // Save the first fetched ticket
-        firstInstance!.save();
+        await firstInstance!.save();
 
         // Save the second fetched ticket and expect an error
         try {
