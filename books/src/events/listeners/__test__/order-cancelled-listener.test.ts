@@ -1,13 +1,14 @@
 import { Message } from "node-nats-streaming";
 import mongoose from "mongoose";
-import { OrderCreatedEvent, OrderStatus } from "@hh-bookstore/common";
-import { OrderCreatedListener } from "../order-created-listener";
+import { OrderCancelledEvent } from "@hh-bookstore/common";
+import { OrderCancelledListener } from "../order-cancelled-listener";
 import { natsClient } from "../../../connections/nats-client";
 import { Book } from "../../../models/book";
 
 const setup = async () => {
     // Create an instance of the listener
-    const listener = new OrderCreatedListener(natsClient.client);
+    const listener = new OrderCancelledListener(natsClient.client);
+    const orderId = new mongoose.Types.ObjectId().toHexString();
 
     // Create and save a book
     const book = Book.build({
@@ -18,15 +19,11 @@ const setup = async () => {
     await book.save();
 
     // Create the fake data event
-    const data: OrderCreatedEvent["data"] = {
-        id: new mongoose.Types.ObjectId().toHexString(),
+    const data: OrderCancelledEvent["data"] = {
+        id: orderId,
         version: 1,
-        status: OrderStatus.Created,
-        userId: "alskdfj",
-        expiresAt: "alskdjf",
         book: {
-            id: book.id,
-            price: book.price
+            id: book.id
         }
     };
 
@@ -38,14 +35,14 @@ const setup = async () => {
     return { listener, book, data, msg };
 };
 
-describe("order created listener", () => {
-    it("Publishes a book updated event", async () => {
-        const { listener, data, msg } = await setup();
+describe("order cancelled listener", () => {
+    it("Update the book, publishes an event", async () => {
+        const { listener, data, book, msg } = await setup();
         await listener.onMessage(data, msg);
-        expect(natsClient.client.publish).toHaveBeenCalled();
 
-        const bookUpdatedData = JSON.parse((natsClient.client.publish as jest.Mock).mock.calls[0][1]);
-        expect(data.id).toEqual(bookUpdatedData.orderId);
+        const updatedBook = await Book.findById(book.id);
+        expect(updatedBook!.orderId).not.toBeDefined();
+        expect(natsClient.client.publish).toHaveBeenCalled();
     });
 
     it("acks the message", async () => {

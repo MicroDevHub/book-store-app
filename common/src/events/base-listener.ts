@@ -20,7 +20,7 @@ export abstract class Listener<T extends Event> {
     abstract onMessage(data: T['data'], msg: Message): void;
   
     // Pre-initialized NATS client
-    private client: Stan;
+    protected client: Stan;
     // Number of seconds that listener has to ack a message
     protected ackWait = 5 * 1000;
   
@@ -48,7 +48,7 @@ export abstract class Listener<T extends Event> {
   
       subscription.on('message', (msg: Message) => {
         console.log(
-          `Message recevied: ${this.subject} / ${this.queueGroupName}`
+          `Message received: ${this.subject} / ${this.queueGroupName}`
         );
   
         const parseData = this.parseMessage(msg);

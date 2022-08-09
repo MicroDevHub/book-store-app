@@ -16,6 +16,7 @@
     ]
   },
   "dependencies": {
+    "@hh-bookstore/common": "^1.0.78",
     "config": "^3.3.7",
     "cookie-session": "^2.0.0",
     "express": "^4.17.2",
@@ -31,7 +32,6 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@hh-bookstore/common": "^1.0.73",
     "@types/config": "^0.0.41",
     "@types/cookie-session": "^2.0.44",
     "@types/express": "^4.17.13",

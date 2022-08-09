@@ -73,7 +73,7 @@ bookSchema.pre("save", function(done) {
     };
 
     done();
-})
+});
 
 bookSchema.methods.isReserved = async function() {
     // Run query to look at all orders. Find an orders where the book

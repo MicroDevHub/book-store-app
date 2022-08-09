@@ -4,7 +4,7 @@ import {
     validateRequest,
     NotFoundError,
     requireAuth,
-    NotAuthorizedError
+    NotAuthorizedError, BadRequestError
 } from "@hh-bookstore/common";
 import { Book } from "../models/book";
 import { BookUpdatedPublisher } from "../events/publisher/book-updated-publisher";
@@ -27,6 +27,10 @@ router.put(
 
         if (!book) {
             return next(new NotFoundError());
+        }
+
+        if (book.orderId) {
+            return next(new BadRequestError("Cannot edit a reserved ticket"));
         }
 
         if (book.userId !== req.currentUser!.id) {

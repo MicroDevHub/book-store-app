@@ -1,6 +1,8 @@
+import config from "config";
 import { natsClient } from "./nats-client";
 import { NatsConfig } from "../types/nats";
-import config from "config";
+import { OrderCreatedListener } from "../events/listeners/order-created-listener";
+import { OrderCancelledListener } from "../events/listeners/order-cancelled-listener";
 
 export class NatsConnection {
     public async startConnect () {
@@ -13,8 +15,14 @@ export class NatsConnection {
             });
             process.on("SIGINT", () => natsClient.client.close());
             process.on("SIGTERM", () => natsClient.client.close());
+            this.listenEvent();
         } catch (error) {
             console.error(error);
         }
+    }
+
+    private listenEvent (): void {
+        new OrderCreatedListener(natsClient.client).listen();
+        new OrderCancelledListener(natsClient.client).listen();
     }
 }
