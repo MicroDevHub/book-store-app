@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: expiration-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: expiration
+  template:
+    metadata:
+      labels:
+        app: expiration
+    spec:
+      containers:
+        - name: expiration
+          image: huyhoang1001/expiration
+          env:
+            # Define the environment variable
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NATS_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: expiration-config-env
+                  key: NATS_URL
+            - name: NATS_CLUSTER_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: expiration-config-env
+                  key: NATS_CLUSTER_ID
+            - name: REDIS_HOST
+              value: expiration-redis-srv

@@ -40,4 +40,11 @@ build:
         manual:
           - src: "**/*.js"
             dest: .
-
+    - image: huyhoang1001/expiration
+      context: expiration
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .

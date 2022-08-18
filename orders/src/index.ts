@@ -1,5 +1,4 @@
 import config from "config";
-
 import { NatsConnection } from "./connections/nats-connection";
 import { MongodbConnection } from "./connections/mongodb-connection";
 import { app } from "./app";

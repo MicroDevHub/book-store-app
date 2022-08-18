@@ -1,17 +1,10 @@
+import config from "config";
 import { natsClient } from "./nats-client";
 import { NatsConfig } from "../types/nats";
-import config from "config";
-import { BookCreatedListener } from "../events/listeners/book-created-listener";
-import { BookUpdatedListener } from "../events/listeners/book-updated-listener";
-import { ExpirationCompleteListener } from "../events/listeners/expiration-complete-listener";
+import { OrderCreatedListener } from "../events/listeners/order-created-listener";
 
 export class NatsConnection {
-
-    constructor() {
-    // TODO
-    }
-
-    public async startConnect() {
+    public async startConnect () {
         try {
             const natsConfig: NatsConfig = config.get("natsConfig");
             await natsClient.connect(natsConfig.clusterId, natsConfig.clientId, natsConfig.url);
@@ -22,9 +15,7 @@ export class NatsConnection {
             process.on("SIGINT", () => natsClient.client.close());
             process.on("SIGTERM", () => natsClient.client.close());
 
-            new BookUpdatedListener(natsClient.client).listen();
-            new BookCreatedListener(natsClient.client).listen();
-            new ExpirationCompleteListener(natsClient.client).listen();
+            new OrderCreatedListener(natsClient.client).listen();
         } catch (error) {
             console.error(error);
         }

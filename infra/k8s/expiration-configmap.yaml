@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: expiration-config-env
+  namespace: default
+data:
+  NATS_URL: http://nats-srv:4222
+  NATS_CLUSTER_ID: bookstore
