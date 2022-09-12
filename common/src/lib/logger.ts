@@ -1,17 +1,17 @@
-import winston from 'winston'
+import winston, { format, Logger } from 'winston'
 import { levels, colors } from '../types/const';
-import { TransformableInfo } from 'logform';
+const { label, colorize, combine, splat, timestamp, printf } = format;
 
 interface Config {
     labelService?: string;
     timestampFormat: string;
-    templateFunction?: (info: TransformableInfo) => string;
 }
 
-class Logger {
+interface ILogger extends Logger {}
 
-    public logger: any;
-    public config: Config | any;
+class LoggerFactory {
+    public logger: Logger;
+    private config: Config | any;
 
     constructor(config?: Config) {
         this.config = config;
@@ -27,22 +27,23 @@ class Logger {
         })
     }
 
-    public format() {
-        const templateFunction = this.config?.templateFunction || this.template;
+    private format() {
         const combineFormat = winston.format.combine(
-            winston.format.label({ label: this.config?.labelService, message: !!this.config?.labelService }),
-            winston.format.timestamp({ format: this.config?.timestampFormat || 'YYYY-MM-DD HH:mm:ss:ms' }),
-            winston.format.colorize({ all: true }),
-            winston.format.printf(
-                templateFunction,
-            )
+            label({ label: this.config?.labelService, message: !!this.config?.labelService }),
+            timestamp({ format: this.config?.timestampFormat || 'YYYY-MM-DD HH:mm:ss:ms' }),
+            colorize({ all: true }),
+            printf( ({ level, message, timestamp , ...metadata}) => {
+                let msg = `${timestamp} [${level}] : ${message} `
+                const metaMsg = JSON.stringify(metadata);
+                if (metaMsg !== "{}") {
+                    msg += metaMsg;
+                }
+                return msg
+            }),
+            combine(splat())
         );
 
         return combineFormat;
-    }
-
-    template(info: TransformableInfo) {
-        return `${info.timestamp} ${info.level}: ${info.message}`;
     }
 
     private transports() {
@@ -62,4 +63,7 @@ class Logger {
     }
 }
 
-export default Logger;
+export {
+    ILogger,
+    LoggerFactory
+}

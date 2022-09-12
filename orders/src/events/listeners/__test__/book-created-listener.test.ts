@@ -4,6 +4,7 @@ import { BookCreatedEvent } from "@hh-bookstore/common";
 import mongoose from "mongoose";
 import { Message } from "node-nats-streaming";
 import { Book } from "../../../models/book";
+jest.setTimeout(50000);
 
 const setup = async () => {
     // create an instance of the listener
@@ -26,27 +27,29 @@ const setup = async () => {
     return { listener, data, msg };
 }
 
+describe("Book created listener", () => {
 
-it("Creates and saves a book", async () => {
-    const { listener, data, msg } = await setup();
+    it("Creates and saves a book", async () => {
+        const { listener, data, msg } = await setup();
 
-    // call the onMessage function with the data object + message object
-    await listener.onMessage(data, msg);
+        // call the onMessage function with the data object + message object
+        await listener.onMessage(data, msg);
 
-    // write assertions to make sure a book was created
-    const book = await Book.findById(data.id);
+        // write assertions to make sure a book was created
+        const book = await Book.findById(data.id);
 
-    expect(book).toBeDefined();
-    expect(book!.title).toEqual(data.title);
-    expect(book!.price).toEqual(data.price);
-})
+        expect(book).toBeDefined();
+        expect(book!.title).toEqual(data.title);
+        expect(book!.price).toEqual(data.price);
+    })
 
-it("acks the message", async () => {
-    const { listener, data, msg } = await setup();
+    it("acks the message", async () => {
+        const { listener, data, msg } = await setup();
 
-    // call the onMessage function with the data object + message object
-    await listener.onMessage(data, msg);
+        // call the onMessage function with the data object + message object
+        await listener.onMessage(data, msg);
 
-    // write assertions to make sure ack function is called
-    expect(msg.ack).toHaveBeenCalled();
+        // write assertions to make sure ack function is called
+        expect(msg.ack).toHaveBeenCalled();
+    })
 })

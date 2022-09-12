@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import { Book } from "../../../models/book";
 import { Order } from "../../../models/order";
 import { Message } from "node-nats-streaming";
-jest.setTimeout(10000000);
+jest.setTimeout(50000);
 
 const setup = async () => {
     // create an instance of the listener

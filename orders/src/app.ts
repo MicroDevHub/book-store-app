@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Express } from "express";
 import { json } from "body-parser";
 import swaggerUi from "swagger-ui-express";
 import cookieSession from "cookie-session";
@@ -6,42 +6,70 @@ import { createOrderRouter } from "./routes/create";
 import { indexOrderRouter } from "./routes/index";
 import { getOrderRouter } from "./routes/get";
 import { deleteOrderRouter } from "./routes/delete";
-
+import { NatsConnection } from "./connections/nats-connection";
+import { IMongodbConnection } from "./connections/mongodb-connection";
 import {
     errorHandler,
     NotFoundError,
-    currentUser
+    currentUser,
+    ILogger
 } from "@hh-bookstore/common";
+import { Container } from 'inversify';
+import * as fs from "fs";
+import config from "config";
 
-/* eslint-disable @typescript-eslint/no-var-requires */
-const swaggerDocument = require("../contract/contract.json");
+export class App {
+    private readonly serviceContract: any;
+    private readonly mongodbConnection: IMongodbConnection;
+    public server: Express;
+    public logger: ILogger;
 
-const app = express();
-app.set("trust proxy", true);
-app.use(json());
-app.use(
-    cookieSession({
-        signed: false,
-        secure: false
-    })
-);
+    constructor(private container: Container) {
+        this.serviceContract = JSON.parse(fs.readFileSync("./contract/contract.json", "utf8"));
+        this.mongodbConnection = this.container.get<IMongodbConnection>("IMongodbConnection");
+        this.logger = this.container.get<ILogger>("ILogger");
+        this.server = express();
+    }
 
-app.use(currentUser);
-app.use(createOrderRouter);
-app.use(indexOrderRouter);
-app.use(getOrderRouter);
-app.use(deleteOrderRouter);
+    public async start() {
+        // initial connection for Nats server
+        const natsConnection = new NatsConnection();
+        await natsConnection.startConnect();
 
-app.use(
-    "/docs",
-    swaggerUi.serve,
-    swaggerUi.setup(swaggerDocument));
+        // initial connection for mongodb
+        await this.mongodbConnection.startConnect();
 
-app.all("*",  () => {
-    throw new NotFoundError();
-});
-app.use(errorHandler);
+        this.initialMiddleware();
+        this.server.listen(config.get("port"), () => {
+            this.logger.info(`Orders service is listening on port ${config.get("port")}!`);
+        });
+    }
 
-export { app };
+    public initialMiddleware() {
+        this.server.set("trust proxy", true);
+        this.server.use(json());
+        this.server.use(
+            cookieSession({
+                signed: false,
+                secure: false
+            })
+        );
 
+        this.server.use(currentUser);
+        this.server.use(createOrderRouter);
+        this.server.use(indexOrderRouter);
+        this.server.use(getOrderRouter);
+        this.server.use(deleteOrderRouter);
+
+        this.server.use(
+            "/docs",
+            swaggerUi.serve,
+            swaggerUi.setup(this.serviceContract));
+
+        this.server.all("*",  () => {
+            throw new NotFoundError();
+        });
+        this.server.use(errorHandler);
+    }
+}
 

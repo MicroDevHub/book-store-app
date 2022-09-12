@@ -1,1 +1,1 @@
-{  "port": 3000,  "natsConfig": {    "clusterId": "books",    "clientId": "book-client",    "url": "http://localhost:4222",    "queueGroupName": "expiration-service"  },  "redisServer": {    "host": "localhost:6369"  }}
+{  "port": 3000,  "natsConfig": {    "clusterId": "books",    "clientId": "expiration-client",    "url": "http://localhost:4222",    "queueGroupName": "expiration-service"  },  "redisServer": {    "host": "localhost:6369"  }}

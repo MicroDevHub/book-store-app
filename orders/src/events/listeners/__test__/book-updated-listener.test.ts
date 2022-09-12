@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import { Message } from "node-nats-streaming";
 import { Book } from "../../../models/book";
 import { BookUpdatedListener } from "../book-updated-listener";
+jest.setTimeout(1000000);
 
 const setup = async () => {
     // create an instance of the listener

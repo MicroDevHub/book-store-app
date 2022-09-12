@@ -76,6 +76,9 @@ Type of resource
 
 ![alt text](documents/assets/kube-externalName.png)
 
+
+https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md
+
 #### Ingress-nginx
 
 What is Ingress? 

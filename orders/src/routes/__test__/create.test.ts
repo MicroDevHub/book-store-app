@@ -1,15 +1,23 @@
 import mongoose from "mongoose";
 import request from "supertest";
-import { app } from "../../app";
+import { App } from "../../app";
 import { Order } from "../../models/order";
 import { OrderStatus } from "@hh-bookstore/common";
 import { Book } from "../../models/book";
 import { natsClient } from "../../connections/nats-client";
-jest.setTimeout(10000);
+import { Container } from "inversify";
+import { configure } from "../../ioc";
+jest.setTimeout(50000);
+
+const container = new Container();
+configure(container);
+const app = new App(container);
+app.initialMiddleware();
+const server = app.server;
 
 describe("Create Routes", () => {
     it("has a route handler listening to /api/orders for post request", async () => {
-        const response = await request(app)
+        const response = await request(server)
             .post("/api/orders")
             .send({});
 
@@ -17,7 +25,7 @@ describe("Create Routes", () => {
     });
 
     it("can only be accessed if the user is signed in", async () => {
-        await request(app)
+        await request(server)
             .post("/api/orders")
             .send({})
             .expect(401);
@@ -25,7 +33,7 @@ describe("Create Routes", () => {
 
     it("returns a status other than 401 if the user is signed in", async () => {
         const cookie = await global.getCookie();
-        const response = await request(app)
+        const response = await request(server)
             .post("/api/orders")
             .set("Cookie", cookie)
             .send({});
@@ -36,7 +44,7 @@ describe("Create Routes", () => {
     // it("return an error if an invalid bookId is provided", async () => {
     //     const cookie = await global.getCookie();
     //
-    //     await request(app)
+    //     await request(server)
     //         .post("/api/orders")
     //         .set("Cookie", cookie)
     //         .send({
@@ -44,7 +52,7 @@ describe("Create Routes", () => {
     //         })
     //         .expect(400)
     //
-    //     await request(app)
+    //     await request(server)
     //         .post("/api/orders")
     //         .set("Cookie", cookie)
     //         .send({
@@ -57,7 +65,7 @@ describe("Create Routes", () => {
         const cookie = await global.getCookie();
         const bookId = new mongoose.Types.ObjectId();
 
-        await request(app)
+        await request(server)
             .post("/api/orders")
             .set("Cookie", cookie)
             .send({
@@ -83,7 +91,7 @@ describe("Create Routes", () => {
             expiresAt: new Date()
         });
         await order.save();
-        await request(app)
+        await request(server)
             .post("/api/orders")
             .set("Cookie", cookie)
             .send({
@@ -102,7 +110,7 @@ describe("Create Routes", () => {
             price: 20
         });
         await book.save();
-        await request(app)
+        await request(server)
             .post("/api/orders")
             .set("Cookie", cookie)
             .send({
@@ -122,7 +130,7 @@ describe("Create Routes", () => {
         });
         await book.save();
 
-        await request(app)
+        await request(server)
             .post("/api/orders")
             .set("Cookie", cookie)
             .send({

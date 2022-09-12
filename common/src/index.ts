@@ -16,7 +16,10 @@ import { Subjects } from "./events/subjects";
 import { BookCreatedEvent } from "./events/book-created-event";
 import { BookUpdatedEvent } from "./events/book-updated-event";
 import { OrderStatus } from "./types/order-status";
-import Logger from "./lib/logger";
+import {
+    LoggerFactory,
+    ILogger
+} from "./lib/logger";
 import { OrderCreatedEvent } from "./events/order-created-event";
 import { OrderCancelledEvent } from "./events/order-cancelled-event";
 import { ExpirationCompleteEvent } from "./events/expiration-complete-event";
@@ -41,7 +44,8 @@ export {
     BookUpdatedEvent,
     OrderCreatedEvent,
     OrderCancelledEvent,
-    Logger,
+    LoggerFactory,
+    ILogger,
     OrderStatus,
     ExpirationCompleteEvent
 }

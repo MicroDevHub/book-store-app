@@ -58,7 +58,7 @@ bookSchema.statics.findByIdAndPreviousVersion = async (event: {
     id: string,
     version: number
 }) => {
-    return await Book.findOne({
+    return Book.findOne({
         _id: event.id,
         version: event.version - 1,
     });
