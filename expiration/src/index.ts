@@ -1,6 +1,6 @@
 import { NatsConnection } from "./connections/nats-connection";
-import { Logger } from "@hh-bookstore/common";
-const logger = new Logger().logger;
+import { LoggerFactory } from "@hh-bookstore/common";
+const logger = new LoggerFactory().logger;
 
 const start = async () => {
     try {

@@ -42,7 +42,7 @@ NATS makes it easy for applications to communicate by sending and receiving mess
 
 Data is encoded and framed as a message and sent by a publisher. The message is received, decoded, and processed by one or more subscribers.
 
-![nat-design](../../assets/nat-design.svg)
+![nat-design](../../assets/events/nat-design.svg)
 
 With this simple design, NATS lets programs share common message-handling code, isolate resources and interdependencies, and scale by easily handling an increase in message volume, whether those are service requests or stream data.
 

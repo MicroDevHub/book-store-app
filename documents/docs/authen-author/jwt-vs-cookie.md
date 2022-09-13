@@ -25,7 +25,7 @@ as if the browser was never closed.
 
 Read more about HTTP cookies ([this](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies?ref=hackernoon.com))
 
-![Open-API-v2-Open-API-v3](../../assets/session.jpg)
+![Open-API-v2-Open-API-v3](../../assets/auth/session.jpg)
 
 Let’s understand what happens typically when a user logs into any website on the web browser. For instance, the user logs in, the server will create a session for the user and store the session data in the server memory.
 
@@ -38,7 +38,7 @@ The server can then verify the session data on the cookie with the session data 
 In token-based authentication, we use JWTs (JSON Web Tokens) for authentication. This is the widely used method for RESTful APIs.
 
 
-![Open-API-v2-Open-API-v3](../../assets/jwt.jpg)
+![Open-API-v2-Open-API-v3](../../assets/auth/jwt.jpg)
 Here, when the user sends a request for user authentication with the login details, the server creates an encrypted token in the form of JSON Web Token (JWT) and sends it back to the client. When the client receives a token, it means that the user is authenticated to perform any activity using the client.
 
 The JWT is stored on the client side usually in localStorage and it is sent as an unique key of that user when the user requests any data from the server or is performing any activity for that website. So, when the request is received by the server, it validates the JWT for every request that it is that particular user only and then sends the required response back to the client.

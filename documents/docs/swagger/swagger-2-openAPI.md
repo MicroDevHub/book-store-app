@@ -1,4 +1,4 @@
-![OpenAPI-Swagger](../../assets/OpenAPI-Swagger.png)
+![OpenAPI-Swagger](../../assets/swagger/OpenAPI-Swagger.png)
 
 ## Swagger module
 
@@ -16,7 +16,7 @@
 
 ## 1. Difference between Swagger version 2.0 vs Open API version 3.0 
 
-![Open-API-v2-Open-API-v3](../../assets/Open-API-v2-Open-API-v3.png)
+![Open-API-v2-Open-API-v3](../../assets/swagger/Open-API-v2-Open-API-v3.png)
 
 ### 1.1 Version
 

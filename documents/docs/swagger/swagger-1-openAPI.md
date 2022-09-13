@@ -1,4 +1,4 @@
-![OpenAPI-Swagger](../../assets/OpenAPI-Swagger.png)
+![OpenAPI-Swagger](../../assets/swagger/OpenAPI-Swagger.png)
 
 ## Swagger module
 

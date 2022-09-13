@@ -62,4 +62,23 @@ Some key features:
 - If a payment is provided, the order should be marked as complete.
 - If an order expires, the associated book should be marked as not being reserved, and the other order can pick up them
 - If a book has been reserved, we should forbid editing the price of the book.
-- If an order is cancelled after payment is provided, the payment should be refunded.
+- If an order is canceled after payment is provided, the payment should be refunded.
+
+### 3.1. Event Flow
+
+**LISTENER**
+
+- BookCreatedListener
+- BookUpdatedListener
+- ExpirationCompleteListener: The listener event for expiration event when the order isn't provided a payment after 15 minutes.
+  ![alt text](../documents/assets/events/expiration_complete-event.png)
+
+**PUBLISHER**
+
+- OrderCancelledPublisher
+- OrderCreatedPublisher
+
+
+
+
+

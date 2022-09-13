@@ -38,11 +38,11 @@ This app is written by Next.js, a framework that provides a common structure for
 
 Next.js is an open-source development framework built over Node.js that simplifies the process for SSR and offers many other useful features.
 
-![alt text](documents/assets/client-ssr.png)
+![alt text](documents/assets/client/client-ssr.png)
 
 This is overview architecture when intergrating client in the system
 
-![alt text](documents/assets/client-ssr-overview.png)
+![alt text](documents/assets/client/client-ssr-overview.png)
 
 ### 2. Microservices
 
@@ -50,15 +50,19 @@ Describe services:
 
 ![alt text](documents/assets/services.png)
 
-#### auth-service
+#### AUTH-SERVICE
 This service will receive request from client to handle authentication and authorization for user [Readme-Auth](auth/Readme.md).
 Refer to [this link](documents/docs/authen-author/jwt-vs-cookie.md) to get more information about authentication and authorization of auth-service.
 
-![alt text](documents/assets/auth-srv-api.png)
+![alt text](documents/assets/auth/auth-srv-api.png)
 
-#### order-service
+#### ORDER-SERVICE
 This service will handle order creation and editing. [Readme-Order](orders/Readme.md).
 ![alt text](documents/assets/orders/routes.png)
+
+#### EXPIRATION-SERVICE
+This service will handle expiration since the order is created. [Readme-Expiration](expiration/Readme.md).
+![alt text](documents/assets/expiration/high_level_design_expiration.png)
 
 
 ### 3. Database
@@ -72,9 +76,9 @@ Type of resource
 
 #### Kubernetes
 
-![alt text](documents/assets/kube-diagram.png)
+![alt text](documents/assets/infras/kube-diagram.png)
 
-![alt text](documents/assets/kube-externalName.png)
+![alt text](documents/assets/infras/kube-externalName.png)
 
 
 https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md
@@ -93,10 +97,11 @@ An Ingress controller is responsible for fulfilling the Ingress, usually with a 
 ***
 ## Development
 
-Want to contribute? Great!
+Want to run on Local? Great!
 
 Bookstore app uses Docker + Kubernetes + Skaffold for fast developing.
 Make a change in your file and instantaneously see your updates!
+
 This is all step to set up and deploy this project on Kubernetes.
 
 First step:
@@ -119,7 +124,7 @@ Add this line to host var file:
 127.0.0.1   bookstore
 ```
 
-Last step (Start deploy and runing webapp)
+Last step (Start deploy and running web-app)
 
 ```sh
  1. Install Skaffold dev https://skaffold.dev/

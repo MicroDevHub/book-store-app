@@ -23,6 +23,6 @@ npm run start
 
 ## Verify
 
-![alt text](../documents/assets/auth-srv-api.png)
+![alt text](../documents/assets/auth/auth-srv-api.png)
 
 After the service runs, the API for the service will be ready. We can proceed to verify it by testing the API through swagger or postman tools
