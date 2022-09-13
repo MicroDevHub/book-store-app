@@ -13,13 +13,19 @@
 
 ### 1. Requirements for Event Bus in Microservice
 
-How to we know what events to create ? and What data should each event contain?
+How do we know what events to create? and What data should each event contain?
 - Deciding on what events to publish and what data they should contain is tricky
 - Depends on the purpose of your app and the features it implements
 - Also involves thinking about concurrency issues!
 
 ***
 ### 2. Solution and Implement.
+
+Three things that cause an event to be published:
+
+- As the result of a request
+- As the result of a timer or interval
+- As the result of another event
 
 ==> Some rules of thumb which is applied in this project:
 - Make one service in charge of all aspects of a Resource. Emit events whenever change that data
