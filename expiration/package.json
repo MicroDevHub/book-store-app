@@ -21,15 +21,15 @@
     "config": "^3.3.7",
     "node-nats-streaming": "^0.3.2",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^4.5.4"
+    "typescript": "^4.5.4",
+    "@types/bull": "^3.15.9",
+    "@types/config": "^0.0.41"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@types/bull": "^3.15.9",
-    "@types/config": "^0.0.41",
     "@types/jest": "^28.1.1",
     "@typescript-eslint/eslint-plugin": "^5.27.0",
     "@typescript-eslint/parser": "^5.27.0",
