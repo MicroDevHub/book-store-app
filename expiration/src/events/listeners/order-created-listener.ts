@@ -1,8 +1,8 @@
 import { Message } from "node-nats-streaming";
-import { Listener, Logger, OrderCreatedEvent, Subjects } from "@hh-bookstore/common";
+import { Listener, LoggerFactory, OrderCreatedEvent, Subjects } from "@hh-bookstore/common";
 import config from "config";
 import { expirationQueue } from "../../queues/expiration-queue";
-const logger = new Logger().logger;
+const logger = new LoggerFactory().logger;
 
 export class OrderCreatedListener extends Listener<OrderCreatedEvent> {
     subject: Subjects.OrderCreated = Subjects.OrderCreated;

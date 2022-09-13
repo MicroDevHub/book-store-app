@@ -1,0 +1,26 @@
+name: tests-expiration-service
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'expiration/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'expiration/**'
+
+  workflow_dispatch:
+
+jobs:
+  Expiration-Service:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Service-build
+        run: cd expiration && npm install
+
+      - name: Eslint
+        run: cd expiration && npm run eslint
