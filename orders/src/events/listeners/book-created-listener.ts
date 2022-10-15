@@ -1,6 +1,6 @@
 import { BookCreatedEvent, Listener, Subjects } from "@hh-bookstore/common";
-import { Message } from "node-nats-streaming";
 import config from "config";
+import { Message } from "node-nats-streaming";
 import { Book } from "../../models/book";
 
 export class BookCreatedListener extends Listener<BookCreatedEvent> {

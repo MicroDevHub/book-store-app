@@ -21,7 +21,7 @@ interface OrderModel extends mongoose.Model<OrderDoc> {
     build(attrs: OrderAttrs): OrderDoc;
 }
 
-const OrderSchema = new mongoose.Schema(
+const orderSchema = new mongoose.Schema(
     {
         userId: {
             type: String,
@@ -50,7 +50,9 @@ const OrderSchema = new mongoose.Schema(
     }
 );
 
-OrderSchema.statics.findByIdAndPreviousVersion = async (event: {
+orderSchema.set("versionKey", "version");
+
+orderSchema.statics.findByIdAndPreviousVersion = async (event: {
     id: string,
     version: number
 }) => {
@@ -60,13 +62,13 @@ OrderSchema.statics.findByIdAndPreviousVersion = async (event: {
     });
 };
 
-OrderSchema.statics.build = (attrs: OrderAttrs) => {
+orderSchema.statics.build = (attrs: OrderAttrs) => {
     return new Order({
         ...attrs,
-        version: 0,
+        version: 0
     });
 };
 
-const Order = mongoose.model<OrderDoc, OrderModel>("Order", OrderSchema);
+const Order = mongoose.model<OrderDoc, OrderModel>("Order", orderSchema);
 
 export { Order };

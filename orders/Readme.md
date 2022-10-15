@@ -69,14 +69,29 @@ Some key features:
 **LISTENER**
 
 - BookCreatedListener
+
+![alt text](../documents/assets/events/book_created-event.png)
+
 - BookUpdatedListener
+
+![alt text](../documents/assets/events/book_updated-event.png)
+
 - ExpirationCompleteListener: The listener event for expiration event when the order isn't provided a payment after 15 minutes.
-  ![alt text](../documents/assets/events/expiration_complete-event.png)
+
+![alt text](../documents/assets/events/expiration_complete-event.png)
 
 **PUBLISHER**
 
 - OrderCancelledPublisher
+
+![alt text](../documents/assets/events/order_cancelled-event.png)
+
+
 - OrderCreatedPublisher
+
+![alt text](../documents/assets/events/order_created-event.png)
+
+
 
 
 
