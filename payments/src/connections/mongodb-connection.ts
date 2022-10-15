@@ -1,6 +1,8 @@
+import "reflect-metadata";
 import mongoose from "mongoose";
 import config from "config";
-import { injectable } from "inversify";
+import { inject, injectable } from "inversify";
+import { ILogger } from "@hh-bookstore/common";
 
 export interface IMongodbConnection {
     startConnect(): Promise<void>;
@@ -8,17 +10,24 @@ export interface IMongodbConnection {
 
 @injectable()
 export class MongodbConnection implements IMongodbConnection {
-
     mongodb: mongoose.Mongoose | undefined;
-    private logger: any;
+    private logger: ILogger;
 
-    constructor() {
-    // TODO
+    constructor(
+        @inject("ILogger") logger: ILogger,
+    ) {
+        this.logger = logger;
     }
 
     public async startConnect() {
         try {
             this.mongodb = mongoose;
+            this.logger.info("MongoDB connection starting...!", {
+                operation: "MongodbConnection.startConnect",
+                parameters: {
+                    mongoUrl: config.get("mongoUrl")
+                }
+            });
             await this.mongodb.connect(config.get("mongoUrl"));
         } catch (error) {
             this.logger.error(error);

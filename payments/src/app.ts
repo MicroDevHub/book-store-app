@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import express, { Express } from "express";
 import { json } from "body-parser";
 import swaggerUi from "swagger-ui-express";
@@ -37,7 +38,7 @@ export class App {
 
         this.initialMiddleware();
         this.server.listen(config.get("port"), () => {
-            this.logger.info(`Orders service is listening on port ${config.get("port")}!`);
+            this.logger.info(`Payments service is listening on port ${config.get("port")}!`);
         });
     }
 

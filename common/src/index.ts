@@ -18,6 +18,7 @@ import { BookUpdatedEvent } from "./events/book-updated-event";
 import { OrderStatus } from "./types/order-status";
 import {
     LoggerFactory,
+    ILoggerFactory,
     ILogger
 } from "./lib/logger";
 import { OrderCreatedEvent } from "./events/order-created-event";
@@ -45,6 +46,7 @@ export {
     OrderCreatedEvent,
     OrderCancelledEvent,
     LoggerFactory,
+    ILoggerFactory,
     ILogger,
     OrderStatus,
     ExpirationCompleteEvent

@@ -1,12 +1,15 @@
+import { injectable, inject } from "inversify";
 import { natsClient } from "./nats-client";
 import { NatsConfig } from "../types/nats";
 import config from "config";
 import { OrderCreatedListener } from "../events/listeners/order-created-listener";
 import { OrderCancelledListener } from "../events/listeners/order-cancelled-listener";
+import {ILogger} from "@hh-bookstore/common";
 
+@injectable()
 export class NatsConnection {
-    constructor() {
-    // TODO
+    constructor(
+    ) {
     }
 
     public async startConnect() {

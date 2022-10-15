@@ -1,13 +1,18 @@
-import winston, { format, Logger } from 'winston'
-import { levels, colors } from '../types/const';
+import winston, {format, Logger} from 'winston'
+import {colors, levels} from '../types/const';
+
 const { label, colorize, combine, splat, timestamp, printf } = format;
 
 interface Config {
     labelService?: string;
-    timestampFormat: string;
+    timestampFormat?: string;
 }
 
 interface ILogger extends Logger {}
+
+interface ILoggerFactory {
+    (name: string): { logger: ILogger };
+}
 
 class LoggerFactory {
     public logger: Logger;
@@ -28,11 +33,11 @@ class LoggerFactory {
     }
 
     private format() {
-        const combineFormat = winston.format.combine(
-            label({ label: this.config?.labelService, message: !!this.config?.labelService }),
-            timestamp({ format: this.config?.timestampFormat || 'YYYY-MM-DD HH:mm:ss:ms' }),
-            colorize({ all: true }),
-            printf( ({ level, message, timestamp , ...metadata}) => {
+        return winston.format.combine(
+            label({label: this.config?.labelService, message: !!this.config?.labelService}),
+            timestamp({format: this.config?.timestampFormat || 'YYYY-MM-DD HH:mm:ss:ms'}),
+            colorize({all: true}),
+            printf(({level, message, timestamp, ...metadata}) => {
                 let msg = `${timestamp} [${level}] : ${message} `
                 const metaMsg = JSON.stringify(metadata);
                 if (metaMsg !== "{}") {
@@ -42,20 +47,17 @@ class LoggerFactory {
             }),
             combine(splat())
         );
-
-        return combineFormat;
     }
 
     private transports() {
-        const transports = [
+        return [
             new winston.transports.Console(),
             new winston.transports.File({
                 filename: 'logs/error.log',
                 level: 'error',
             }),
-            new winston.transports.File({ filename: 'logs/all.log' }),
+            new winston.transports.File({filename: 'logs/all.log'}),
         ];
-        return transports;
     }
 
     private level() {
@@ -65,5 +67,6 @@ class LoggerFactory {
 
 export {
     ILogger,
-    LoggerFactory
+    LoggerFactory,
+    ILoggerFactory
 }
