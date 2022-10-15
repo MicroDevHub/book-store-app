@@ -1,0 +1,1 @@
+{  "mongoUrl": "mongodb://127.0.0.1:27017/payment",  "port": 3000,  "jwt_key": "hoang_key"}

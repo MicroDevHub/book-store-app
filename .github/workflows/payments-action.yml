@@ -1,0 +1,26 @@
+name: tests-payments-service
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'payments/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'payments/**'
+
+  workflow_dispatch:
+
+jobs:
+  Payments-Service:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Service-build
+        run: cd payments && npm install
+
+      - name: Unit testing
+        run: cd payments && npm run test:ci
