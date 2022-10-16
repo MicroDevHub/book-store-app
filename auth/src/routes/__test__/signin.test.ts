@@ -1,50 +1,63 @@
-import request from 'supertest';
-import { app } from '../../app';
+import request from "supertest";
+import { Container } from "inversify";
 
-it('should fail when a email that does not exists is supplied', async () => {
-    await request(app)
-        .post('/api/users/signin')
-        .send({
-            email: 'test@test.com',
-            password: 'password'
-        })
-        .expect(400);
-});
+import { configure } from "../../ioc";
+import { App } from "../../app";
 
-it('should fail when an incorrect password is supplied', async () => {
-    await request(app)
-        .post('/api/users/signup')
-        .send({
-            email: 'test@test.com',
-            password: 'password'
-        })
-        .expect(201);
+const container = new Container();
+configure(container);
+const app = new App(container);
+app.initialMiddleware();
+const server = app.server;
+jest.setTimeout(60000);
 
-    await request(app)
-        .post('/api/users/signin')
-        .send({
-            email: 'test@test.com',
-            password: 'password1'
-        })
-        .expect(400);
-});
+describe("Signin", () => {
+    it("should fail when a email that does not exists is supplied", async () => {
+        await request(server)
+            .post("/api/users/signin")
+            .send({
+                email: "test@test.com",
+                password: "password"
+            })
+            .expect(400);
+    });
 
-it('should responds with a cookie when given a valid password', async () => {
-    await request(app)
-        .post('/api/users/signup')
-        .send({
-            email: 'test@test.com',
-            password: 'password'
-        })
-        .expect(201);
+    it("should fail when an incorrect password is supplied", async () => {
+        await request(server)
+            .post("/api/users/signup")
+            .send({
+                email: "test@test.com",
+                password: "password"
+            })
+            .expect(201);
 
-    const response = await request(app)
-        .post('/api/users/signin')
-        .send({
-            email: 'test@test.com',
-            password: 'password'
-        })
-        .expect(200);
+        await request(server)
+            .post("/api/users/signin")
+            .send({
+                email: "test@test.com",
+                password: "password1"
+            })
+            .expect(400);
+    });
 
-    expect(response.get('Set-Cookie')).toBeDefined();
+    it("should responds with a cookie when given a valid password", async () => {
+        await request(server)
+            .post("/api/users/signup")
+            .send({
+                email: "test@test.com",
+                password: "password"
+            })
+            .expect(201);
+
+        const response = await request(server)
+            .post("/api/users/signin")
+            .send({
+                email: "test@test.com",
+                password: "password"
+            })
+            .expect(200);
+
+        expect(response.get("Set-Cookie")).toBeDefined();
+    });
+
 });

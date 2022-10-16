@@ -1,23 +1,33 @@
-import request from 'supertest';
-import { app } from '../../app';
+import request from "supertest";
+import { Container } from "inversify";
 
-it('should responds with details about the current user', async () => {
-    const cookie = await global.getCookie();
+import { App } from "../../app";
+import { configure } from "../../ioc";
 
-    const response = await request(app)
-        .get('/api/users/currentuser')
-        .set('Cookie', cookie)
-        .send()
-        .expect(200);
+const container = new Container();
+configure(container);
+const app = new App(container);
+app.initialMiddleware();
+const server = app.server;
 
-    expect(response.body.currentUser.email).toEqual('test@test.com');
+describe("Current user", () => {
+    it("should responds with details about the current user", async () => {
+        const cookie = await global.getCookie();
 
+        const response = await request(server)
+            .get("/api/users/currentuser")
+            .set("Cookie", cookie)
+            .send()
+            .expect(200);
+
+        expect(response.body.currentUser.email).toEqual("test@test.com");
+
+    });
+
+    // it('should returns a 401 with missing cookie', async () => {
+    //     await request(server)
+    //         .get('/api/users/currentuser')
+    //         .send()
+    //         .expect(401);
+    // });
 });
-
-// it('should returns a 401 with missing cookie', async () => {
-//     await request(app)
-//         .get('/api/users/currentuser')
-//         .send()
-//         .expect(401);
-// });
-

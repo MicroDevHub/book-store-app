@@ -56,6 +56,10 @@ Refer to [this link](documents/docs/authen-author/jwt-vs-cookie.md) to get more 
 
 ![alt text](documents/assets/auth/auth-srv-api.png)
 
+#### BOOK-SERVICE
+This service will handle book creation and editing. [Readme-Book](books/Readme.md).
+![alt text](documents/assets/books/book-srv-api.png)
+
 #### ORDER-SERVICE
 This service will handle order creation and editing. [Readme-Order](orders/Readme.md).
 ![alt text](documents/assets/orders/routes.png)

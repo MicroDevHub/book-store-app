@@ -1,5 +1,6 @@
 import { Message } from "node-nats-streaming";
 import { Listener, OrderCancelledEvent, Subjects } from "@hh-bookstore/common";
+
 import { Book } from "../../models/book";
 import config from "config";
 import { BookUpdatedPublisher } from "../publisher/book-updated-publisher";

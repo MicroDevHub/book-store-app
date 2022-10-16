@@ -6,6 +6,7 @@ import {
     requireAuth,
     NotAuthorizedError, BadRequestError
 } from "@hh-bookstore/common";
+
 import { Book } from "../models/book";
 import { BookUpdatedPublisher } from "../events/publisher/book-updated-publisher";
 import { natsClient } from "../connections/nats-client";

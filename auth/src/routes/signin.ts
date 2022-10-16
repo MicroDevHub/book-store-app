@@ -1,28 +1,28 @@
-import express, { Request, Response, NextFunction } from 'express';
-import { body } from 'express-validator';
-import jwt from 'jsonwebtoken';
-import config from 'config';
+import express, { Request, Response, NextFunction } from "express";
+import { body } from "express-validator";
+import jwt from "jsonwebtoken";
+import config from "config";
 
-import { Password } from '../services/password';
-import { User } from '../models/user';
+import { Password } from "../services/password";
+import { User } from "../models/user";
 
 import {
     validateRequest,
     BadRequestError
-} from '@hh-bookstore/common';
+} from "@hh-bookstore/common";
 
 const router = express.Router();
 
 router.post(
-    '/api/users/signin',
+    "/api/users/signin",
     [
-        body('email')
+        body("email")
             .isEmail()
-            .withMessage('Email must be valid'),
-        body('password')
+            .withMessage("Email must be valid"),
+        body("password")
             .trim()
             .notEmpty()
-            .withMessage('You must supply a password')
+            .withMessage("You must supply a password")
     ],
     validateRequest,
     async (req: Request, res: Response, next: NextFunction) => {
@@ -30,7 +30,7 @@ router.post(
 
         const existingUser = await User.findOne({ email });
         if (!existingUser) {
-            return next(new BadRequestError('Invalid credentials'));
+            return next(new BadRequestError("Invalid credentials"));
         }
 
         const passwordsMatch = await Password.compare(
@@ -38,7 +38,7 @@ router.post(
             password
         );
         if (!passwordsMatch) {
-            return next(new BadRequestError('Invalid credentials'));
+            return next(new BadRequestError("Invalid credentials"));
         }
 
         // Generate JWT
@@ -47,7 +47,7 @@ router.post(
                 id: existingUser.id,
                 email: existingUser.email
             },
-            config.get('jwt_key')
+            config.get("jwt_key")
         );
 
         // Store it on session object

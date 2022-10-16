@@ -1,7 +1,16 @@
-import { MongoMemoryServer } from 'mongodb-memory-server';
-import mongoose from 'mongoose';
-import request from 'supertest';
-import { app } from '../app';
+import { MongoMemoryServer } from "mongodb-memory-server";
+import mongoose from "mongoose";
+import request from "supertest";
+import { Container } from "inversify";
+
+import { App } from "../app";
+import { configure } from "../ioc";
+
+const container = new Container();
+configure(container);
+const app = new App(container);
+app.initialMiddleware();
+const server = app.server;
 
 declare global {
     /* eslint-disable */
@@ -36,7 +45,7 @@ global.getCookie = async () => {
     const email = 'test@test.com';
     const password = 'password';
 
-    const response = await request(app)
+    const response = await request(server)
         .post('/api/users/signup')
         .send({
             email,
@@ -44,7 +53,5 @@ global.getCookie = async () => {
         })
         .expect(201);
 
-    const cookie = response.get('Set-Cookie');
-
-    return cookie;
+    return response.get('Set-Cookie');
 };

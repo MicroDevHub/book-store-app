@@ -1,6 +1,7 @@
 import { Message } from "node-nats-streaming";
 import mongoose from "mongoose";
 import { OrderCancelledEvent } from "@hh-bookstore/common";
+
 import { OrderCancelledListener } from "../order-cancelled-listener";
 import { natsClient } from "../../../connections/nats-client";
 import { Book } from "../../../models/book";

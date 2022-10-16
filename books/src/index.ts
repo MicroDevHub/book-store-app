@@ -1,27 +1,21 @@
-import config from "config";
+import { App } from "./app";
+import { Container } from "inversify";
+import { configure } from "./ioc";
 
-import { NatsConnection } from "./connections/nats-connection";
-import { MongodbConnection } from "./connections/mongodb-connection";
-import { app } from "./app";
-import { Logger } from "@hh-bookstore/common";
-const logger = new Logger().logger;
-
-const start = async () => {
+export const start = async () => {
     try {
-        // initial connection for Nats server
-        const natsConnection = new NatsConnection();
-        await natsConnection.startConnect();
-
-        // initial connection for mongodb
-        const mongodbConnection = new MongodbConnection();
-        await mongodbConnection.startConnect();
-
-        app.listen(config.get("port"), () => {
-            logger.info(`Books service is listening on port ${config.get("port")}!`);
-        });
+        const container = new Container();
+        configure(container);
+        const app = new App(container);
+        await app.start();
     } catch (err) {
-        logger.error(err);
+        console.error(err);
     }
 };
 
 start();
+
+
+
+
+

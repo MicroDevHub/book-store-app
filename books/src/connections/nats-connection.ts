@@ -1,23 +1,48 @@
 import config from "config";
+import { inject, injectable } from "inversify";
+import { ILogger, ILoggerFactory } from "@hh-bookstore/common";
+
 import { natsClient } from "./nats-client";
 import { NatsConfig } from "../types/nats";
 import { OrderCreatedListener } from "../events/listeners/order-created-listener";
 import { OrderCancelledListener } from "../events/listeners/order-cancelled-listener";
 
-export class NatsConnection {
+export interface INatsConnection {
+    startConnect(): Promise<void>;
+}
+
+@injectable()
+export class NatsConnection implements INatsConnection {
+    private logger: ILogger;
+
+    constructor(
+        @inject("ILoggerFactory") loggerFactory: ILoggerFactory,
+    ) {
+        this.logger = loggerFactory(NatsConnection.name).logger;
+    }
+
     public async startConnect () {
         try {
             const natsConfig: NatsConfig = config.get("natsConfig");
+            this.logger.info("NATS connection starting...!", {
+                operation: "NatsConnection.startConnect",
+                parameters: {
+                    natsConfig
+                }
+            });
             await natsClient.connect(natsConfig.clusterId, natsConfig.clientId, natsConfig.url);
             natsClient.client.on("close", () => {
-                console.log("NATS connection closed!");
+                this.logger.warn("NATS connection closed!");
                 process.exit();
             });
             process.on("SIGINT", () => natsClient.client.close());
             process.on("SIGTERM", () => natsClient.client.close());
             this.listenEvent();
         } catch (error) {
-            console.error(error);
+            this.logger.error("Having an error when starting connect to NATs server", {
+                Operation: "NatsConnection.startConnect",
+                error,
+            });
         }
     }
 

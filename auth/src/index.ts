@@ -1,21 +1,21 @@
-import mongoose from 'mongoose';
-import config from 'config';
-import { Logger } from '@hh-bookstore/common';
-import { app } from './app';
+import { App } from "./app";
+import { Container } from "inversify";
+import { configure } from "./ioc";
 
-const logger = new Logger().logger;
-
-const start = async () => {
+export const start = async () => {
     try {
-        await mongoose.connect(config.get('mongoUrl'));
-        logger.info(`Connected to MongoDb ${config.get('mongoUrl')}`);
-        app.listen(config.get('port'), () => {
-            console.log(`Auth service is listening on port ${config.get('port')}!`);
-        });
+        const container = new Container();
+        configure(container);
+        const app = new App(container);
+        await app.start();
     } catch (err) {
-        logger.error(err);
+        console.error(err);
     }
-
 };
 
 start();
+
+
+
+
+
