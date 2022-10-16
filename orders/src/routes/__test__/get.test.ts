@@ -1,8 +1,9 @@
 import request from "supertest";
-import { App } from "../../app";
-import mongoose from "mongoose";
-import { Book } from "../../models/book";
 import { Container } from "inversify";
+import mongoose from "mongoose";
+
+import { App } from "../../app";
+import { Book } from "../../models/book";
 import { configure } from "../../ioc";
 jest.setTimeout(50000);
 

@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+import { inject, injectable } from "inversify";
+import { ILogger, ILoggerFactory } from "@hh-bookstore/common";
 import config from "config";
-import { injectable } from "inversify";
 
 export interface IMongodbConnection {
     startConnect(): Promise<void>;
@@ -8,18 +9,26 @@ export interface IMongodbConnection {
 
 @injectable()
 export class MongodbConnection implements IMongodbConnection {
-
     mongodb: mongoose.Mongoose | undefined;
-    private logger: any;
+    private logger: ILogger;
 
-    constructor() {
-    // TODO
+    constructor(
+        @inject("ILoggerFactory") loggerFactory: ILoggerFactory,
+    ) {
+        this.logger = loggerFactory(MongodbConnection.name).logger;
     }
 
     public async startConnect() {
         try {
             this.mongodb = mongoose;
+            this.logger.info("MongoDB connection starting...!", {
+                operation: "MongodbConnection.startConnect",
+                parameters: {
+                    mongoUrl: config.get("mongoUrl")
+                }
+            });
             await this.mongodb.connect(config.get("mongoUrl"));
+            this.logger.info("MongoDB connected successfully !");
         } catch (error) {
             this.logger.error(error);
             throw error;

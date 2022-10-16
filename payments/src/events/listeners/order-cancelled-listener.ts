@@ -1,6 +1,7 @@
 import { Message } from "node-nats-streaming";
 import { Listener, OrderCancelledEvent, OrderStatus, Subjects } from "@hh-bookstore/common";
 import config from "config";
+
 import { Order } from "../../models/order";
 
 export class OrderCancelledListener extends Listener<OrderCancelledEvent> {

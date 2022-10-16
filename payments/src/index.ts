@@ -1,5 +1,6 @@
-import { App } from "./app";
 import { Container } from "inversify";
+
+import { App } from "./app";
 import { configure } from "./ioc";
 
 export const start = async () => {

@@ -2,7 +2,7 @@ import "reflect-metadata";
 import mongoose from "mongoose";
 import config from "config";
 import { inject, injectable } from "inversify";
-import { ILogger } from "@hh-bookstore/common";
+import { ILogger, ILoggerFactory } from "@hh-bookstore/common";
 
 export interface IMongodbConnection {
     startConnect(): Promise<void>;
@@ -14,9 +14,9 @@ export class MongodbConnection implements IMongodbConnection {
     private logger: ILogger;
 
     constructor(
-        @inject("ILogger") logger: ILogger,
+        @inject("ILoggerFactory") loggerFactory: ILoggerFactory,
     ) {
-        this.logger = logger;
+        this.logger = loggerFactory(MongodbConnection.name).logger;
     }
 
     public async startConnect() {
@@ -29,6 +29,7 @@ export class MongodbConnection implements IMongodbConnection {
                 }
             });
             await this.mongodb.connect(config.get("mongoUrl"));
+            this.logger.info("MongoDB connected successfully !");
         } catch (error) {
             this.logger.error(error);
             throw error;

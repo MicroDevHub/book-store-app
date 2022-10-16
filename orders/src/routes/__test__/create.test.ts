@@ -1,11 +1,12 @@
 import mongoose from "mongoose";
 import request from "supertest";
+import { Container } from "inversify";
+import { OrderStatus } from "@hh-bookstore/common";
+
 import { App } from "../../app";
 import { Order } from "../../models/order";
-import { OrderStatus } from "@hh-bookstore/common";
 import { Book } from "../../models/book";
 import { natsClient } from "../../connections/nats-client";
-import { Container } from "inversify";
 import { configure } from "../../ioc";
 jest.setTimeout(50000);
 

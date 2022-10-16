@@ -9,6 +9,7 @@ import {
     OrderStatus,
     BadRequestError
 } from "@hh-bookstore/common";
+
 import { natsClient } from "../connections/nats-client";
 import { OrderCreatedPublisher } from "../events/publishers/order-created-publisher";
 import { Book } from "../models/book";

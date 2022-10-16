@@ -38,7 +38,7 @@ class LoggerFactory {
             timestamp({format: this.config?.timestampFormat || 'YYYY-MM-DD HH:mm:ss:ms'}),
             colorize({all: true}),
             printf(({level, message, timestamp, ...metadata}) => {
-                let msg = `${timestamp} [${level}] : ${message} `
+                let msg = `${timestamp}-${level}: ${message} `
                 const metaMsg = JSON.stringify(metadata);
                 if (metaMsg !== "{}") {
                     msg += metaMsg;
