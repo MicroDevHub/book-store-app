@@ -18,12 +18,15 @@ Bookstore app uses a number of open source projects to work properly:
 - [NextJS](https://nextjs.org/) - A flexible React framework that gives you building blocks to create fast web applications.
 - [NodeJS](https://nodejs.dev/) - As an asynchronous event-driven JavaScript runtime, Node.js is designed to build scalable network applications.
 - [Express](https://expressjs.com/) - Fast node.js network app framework.
+- [Inversify](https://inversify.io/) - InversifyJS A powerful and lightweight inversion of control container for JavaScript & Node.js apps powered by TypeScript..
 - [MongoDB](https://www.mongodb.com/) - A document database with the scalability and flexibility that you want with the querying and indexing that you need.
+- [Redis](https://redis.io/) - Redis is an open source (BSD licensed), in-memory data structure store used as a database, cache, message broker, and streaming engine.
 - [Typescript](https://www.typescriptlang.org/) - Strongly typed programming language that builds on JavaScript.
 - [Kubernetes](https://kubernetes.io/vi/) - Open-source system for automating deployment, scaling, and management of containerized applications.
 - [Skaffold](https://skaffold.dev/) - Command line tool that facilitates continuous development for Kubernetes-native applications.
 - [NATS](https://docs.nats.io/) - NATS is a connective technology that powers modern distributed systems.
 - [GitHub-Action](https://github.com/features/actions) - Implementing CI/CD with GitHub Actions
+- [Stripe-API](https://stripe.com/docs/api?lang=node) - Provide stripe's software and APIs to accept payments, send payouts, and manage businesses online.
 
 ***
 ## Introduce System
@@ -54,19 +57,27 @@ Describe services:
 This service will receive request from client to handle authentication and authorization for user [Readme-Auth](auth/Readme.md).
 Refer to [this link](documents/docs/authen-author/jwt-vs-cookie.md) to get more information about authentication and authorization of auth-service.
 
-![alt text](documents/assets/auth/auth-srv-api.png)
+![Auth-API](documents/assets/auth/auth-srv-api.png)
 
 #### BOOK-SERVICE
 This service will handle book creation and editing. [Readme-Book](books/Readme.md).
-![alt text](documents/assets/books/book-srv-api.png)
 
-#### ORDER-SERVICE
+![Books-API](documents/assets/books/book-srv-api.png)
+
+#### ORDERS-SERVICE
 This service will handle order creation and editing. [Readme-Order](orders/Readme.md).
-![alt text](documents/assets/orders/routes.png)
+
+![Orders-API](documents/assets/orders/routes.png)
+
+#### PAYMENTS-SERVICE
+This service will handle paying integrate with stripe-API. [Readme-Payment](payments/Readme.md).
+
+![Payments-API](documents/assets/payments)
 
 #### EXPIRATION-SERVICE
 This service will handle expiration since the order is created. [Readme-Expiration](expiration/Readme.md).
-![alt text](documents/assets/expiration/high_level_design_expiration.png)
+
+![Expiration-API](documents/assets/expiration/high_level_design_expiration.png)
 
 
 ### 3. Database

@@ -1,4 +1,4 @@
-name: tests-orders-service
+name: orders-service
 
 on:
   push:
