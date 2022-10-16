@@ -15,6 +15,7 @@ import config from "config";
 
 import { INatsConnection } from "./connections/nats-connection";
 import { IMongodbConnection } from "./connections/mongodb-connection";
+import { createPaymentRouter } from "./routes/create";
 
 export class App {
     private readonly serviceContract: any;
@@ -55,6 +56,7 @@ export class App {
             })
         );
         this.server.use(currentUser);
+        this.server.use(createPaymentRouter);
         this.server.use(
             "/docs",
             swaggerUi.serve,

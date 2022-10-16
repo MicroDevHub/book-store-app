@@ -5,7 +5,7 @@ import config from "config";
 
 declare global {
 	/* eslint-disable no-var */
-	var getCookie: () => string[];
+	var getCookie: (id?: string) => string[];
 }
 
 // this one will let Jest know, when having any request to real function, it will redirect to mock function.
@@ -38,10 +38,10 @@ afterAll(async () => {
     }
 });
 
-global.getCookie = () => {
+global.getCookie = (id?: string) => {
     // Build a JWT payload. { id, email }
     const payload = {
-        id: new mongoose.Types.ObjectId().toHexString(),
+        id: id || new mongoose.Types.ObjectId().toHexString(),
         email: "test@gmail.com"
     };
 

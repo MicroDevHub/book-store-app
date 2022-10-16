@@ -33,11 +33,12 @@ Here is the structural database of payment service.
 
 ![alt text](../documents/assets/payments/structural-database.png)
 
-we need each payment's doc to have a reference to the Book model to get the necessary information from the book,
-which be contained in payment (title, price, version).
+we need each payment's doc to have a reference to the Order model to get the necessary information from the order,
+which be contained in payment (id, userId, status, price, version).
 
 So to be able doing this, we will use Mongoose Ref/Population Feature
-(Population is the process of automatically replacing the specified paths in the document with document(s) from other collection(s). We may populate a single document, multiple documents, a plain object, multiple plain objects, or all objects returned from a query.)
+(Population is the process of automatically replacing the specified paths in the document with document(s) from other collection(s).
+We may populate a single document, multiple documents, a plain object, multiple plain objects, or all objects returned from a query.)
 
 ![alt text](../documents/assets/payments/mongoose-ref-population.png)
 
@@ -45,9 +46,25 @@ So to be able doing this, we will use Mongoose Ref/Population Feature
 
 #### Describe Properties:
 
-## 3. Integrate with NATS
+## 4 Payment Flow With Stripe
+- On client service, we will use the stripe js library to create a dialog for payment detail information.
 
-### 3.1. Event Flow
+![alt text](../documents/assets/payments/payment-stripe-lib.png)
+
+
+- The client will make a request to Stripe API to get a token charge.
+
+![alt text](../documents/assets/payments/payment-verify.png)
+
+
+- Payment service will verify the payment with Stripe API and create the charge record to record successful payment
+
+![alt text](../documents/assets/payments/payment-charge.png)
+
+
+## 5. Integrate with NATS
+
+### 5.1. Event Flow
 
 **LISTENER**
 

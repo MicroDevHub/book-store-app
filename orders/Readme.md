@@ -56,7 +56,7 @@ So to be able doing this, we will use Mongoose Ref/Population Feature
 - **ExpireAt**: Expiration time from the time the order is created
 
 
-## 3. Integrate with NATS
+## 4. Integrate with NATS
 Some key features: 
 - If no payment is provided after 15 minutes, an order should expire.
 - If a payment is provided, the order should be marked as complete.
@@ -64,7 +64,7 @@ Some key features:
 - If a book has been reserved, we should forbid editing the price of the book.
 - If an order is canceled after payment is provided, the payment should be refunded.
 
-### 3.1. Event Flow
+### 4.1. Event Flow
 
 **LISTENER**
 

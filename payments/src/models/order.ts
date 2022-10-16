@@ -55,7 +55,7 @@ orderSchema.statics.findByIdAndPreviousVersion = async (event: {
     id: string,
     version: number
 }) => {
-    return await Order.findOne({
+    return Order.findOne({
         _id: event.id,
         version: event.version - 1,
     });
