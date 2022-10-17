@@ -5,8 +5,10 @@ import { OrderStatus } from "@hh-bookstore/common";
 
 import { App } from "../../app";
 import { Order } from "../../models/order";
+import { Payment } from "../../models/payment";
 import { configure } from "../../ioc";
 import { stripe } from "../../utils/stripe";
+import { natsClient } from "../../connections/nats-client";
 jest.setTimeout(50000);
 
 const container = new Container();
@@ -185,5 +187,12 @@ describe("Create Routes", () => {
 
         expect(stripeCharge!.amount).toEqual(price * 100);
         expect(stripeCharge!.currency).toEqual("usd");
+
+        const payment = await Payment.findOne({
+            orderId: order.id,
+            stripeId: stripeCharge!.id
+        });
+        expect(natsClient.client.publish).toHaveBeenCalled();
+        expect(payment).not.toBeNull();
     });
 })

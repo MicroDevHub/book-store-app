@@ -64,6 +64,4 @@ describe("Index Routes", () => {
 
         expect(response.body.length).toEqual(2)
     })
-
-    it.todo("emits a orders cancelled event");
 })

@@ -72,7 +72,7 @@ This service will handle order creation and editing. [Readme-Order](orders/Readm
 #### PAYMENTS-SERVICE
 This service will handle paying integrate with stripe-API. [Readme-Payment](payments/Readme.md).
 
-![Payments-API](documents/assets/payments)
+![Payments-API](documents/assets/payments/payment-srv-api.png)
 
 #### EXPIRATION-SERVICE
 This service will handle expiration since the order is created. [Readme-Expiration](expiration/Readme.md).

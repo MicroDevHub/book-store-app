@@ -42,25 +42,25 @@ describe("Create Routes", () => {
         expect(response.status).not.toEqual(401);
     });
 
-    // it("return an error if an invalid bookId is provided", async () => {
-    //     const cookie = await global.getCookie();
-    //
-    //     await request(server)
-    //         .post("/api/orders")
-    //         .set("Cookie", cookie)
-    //         .send({
-    //             bookId: "",
-    //         })
-    //         .expect(400)
-    //
-    //     await request(server)
-    //         .post("/api/orders")
-    //         .set("Cookie", cookie)
-    //         .send({
-    //             bookId: 10
-    //         })
-    //         .expect(400)
-    // })
+    it("return an error if an invalid bookId is provided", async () => {
+        const cookie = await global.getCookie();
+
+        await request(server)
+            .post("/api/orders")
+            .set("Cookie", cookie)
+            .send({
+                bookId: "",
+            })
+            .expect(400)
+
+        await request(server)
+            .post("/api/orders")
+            .set("Cookie", cookie)
+            .send({
+                bookId: 10
+            })
+            .expect(400)
+    })
 
     it("return an error if the book does not exit", async () => {
         const cookie = await global.getCookie();

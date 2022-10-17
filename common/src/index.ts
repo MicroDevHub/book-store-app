@@ -22,6 +22,7 @@ import {
     ILogger
 } from "./lib/logger";
 import { OrderCreatedEvent } from "./events/order-created-event";
+import { PaymentCreatedEvent } from "./events/payment-created-event";
 import { OrderCancelledEvent } from "./events/order-cancelled-event";
 import { ExpirationCompleteEvent } from "./events/expiration-complete-event";
 
@@ -45,6 +46,7 @@ export {
     BookUpdatedEvent,
     OrderCreatedEvent,
     OrderCancelledEvent,
+    PaymentCreatedEvent,
     LoggerFactory,
     ILoggerFactory,
     ILogger,

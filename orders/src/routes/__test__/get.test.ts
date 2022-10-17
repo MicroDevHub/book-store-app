@@ -68,6 +68,4 @@ describe("Get Routes", () => {
 
         expect(fetchedOrder.id).toEqual(orders.id);
     })
-
-    it.todo("emits a orders cancelled event");
 })

@@ -10,7 +10,10 @@ import {
 } from "@hh-bookstore/common";
 
 import { Order } from "../models/order";
+import { Payment } from "../models/payment";
 import { stripe } from "../utils/stripe";
+import { PaymentCreatedPublisher } from "../events/publishers/payment-created-publisher";
+import { natsClient } from "../connections/nats-client";
 
 const router = express.Router();
 
@@ -50,13 +53,24 @@ router.post(
                 return next(new BadRequestError("Cannot pay for an cancelled order"));
             }
 
-            await stripe.charges.create({
+            const charge = await stripe.charges.create({
                 amount: order.price * 100,
                 currency: "usd",
                 source: token
             });
 
-            res.status(201).send({ success: "true" });
+            const payment = Payment.build({
+                orderId,
+                stripeId: charge.id
+            });
+            await payment.save();
+            await new PaymentCreatedPublisher(natsClient.client).publish({
+                id: payment.id,
+                orderId: payment.orderId,
+                stripeId: payment.stripeId
+            });
+
+            res.status(201).send({ id: payment.id });
         } catch (e) {
             return next(e);
         }

@@ -6,6 +6,7 @@ import { NatsConfig } from "../types/nats";
 import { BookCreatedListener } from "../events/listeners/book-created-listener";
 import { BookUpdatedListener } from "../events/listeners/book-updated-listener";
 import { ExpirationCompleteListener } from "../events/listeners/expiration-complete-listener";
+import { PaymentCreatedListener } from "../events/listeners/payment-created-listener";
 
 export interface INatsConnection {
     startConnect(): Promise<void>;
@@ -52,5 +53,6 @@ export class NatsConnection implements INatsConnection {
         new BookUpdatedListener(natsClient.client).listen();
         new BookCreatedListener(natsClient.client).listen();
         new ExpirationCompleteListener(natsClient.client).listen();
+        new PaymentCreatedListener(natsClient.client).listen();
     }
 }
