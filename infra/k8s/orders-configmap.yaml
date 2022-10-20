@@ -6,7 +6,7 @@ metadata:
 data:
   ORDERS_MONGO_URL: mongodb://orders-mongo-srv/orders-db
   NATS_URL: http://nats-srv:4222
-  NATS_CLUSTER_ID: bookstore
+  NATS_CLUSTER_ID: books
 ---
 apiVersion: v1
 kind: Secret

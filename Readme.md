@@ -136,7 +136,7 @@ Second step (Kubernetes setup):
 Third step (Update host var)
 ```
 Add this line to host var file:
-127.0.0.1   bookstore
+127.0.0.1   bookstore.com
 ```
 
 Last step (Start deploy and running web-app)

@@ -38,7 +38,7 @@ export class App {
 
         this.initialMiddleware();
         this.server.listen(this.port, () => {
-            this.logger.info(`Orders service is listening on port ${this.port}!`);
+            this.logger.info(`Auth service is listening on port ${this.port}!`);
         });
     }
 

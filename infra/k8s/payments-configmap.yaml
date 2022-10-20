@@ -6,7 +6,7 @@ metadata:
 data:
   PAYMENTS_MONGO_URL: mongodb://payments-mongo-srv/payments-db
   NATS_URL: http://nats-srv:4222
-  NATS_CLUSTER_ID: bookstore
+  NATS_CLUSTER_ID: books
 ---
 apiVersion: v1
 kind: Secret
@@ -16,5 +16,5 @@ metadata:
 type: Opaque
 data:
   JWT_KEY: YmFyCg==
-  STRIPE_KEY: sk_test_51LtUCpLpNaCMRQGT0uj409rvMbxBCNdwxIjeAfo3kLd1YX9BYhPmOaxhhKSCVQytMKOhofQH5aBFvAskd3PMu5SI00wvtadaG3
+  STRIPE_KEY: YmFyCg==
 
