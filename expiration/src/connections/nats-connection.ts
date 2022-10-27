@@ -14,10 +14,13 @@ export class NatsConnection {
             });
             process.on("SIGINT", () => natsClient.client.close());
             process.on("SIGTERM", () => natsClient.client.close());
-
-            new OrderCreatedListener(natsClient.client).listen();
+            this.listenEvent();
         } catch (error) {
             console.error(error);
         }
+    }
+
+    private listenEvent (): void {
+        new OrderCreatedListener(natsClient.client).listen();
     }
 }

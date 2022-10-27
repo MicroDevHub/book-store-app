@@ -11,6 +11,8 @@ export class OrderCreatedListener extends Listener<OrderCreatedEvent> {
 
     async onMessage (data: OrderCreatedEvent["data"], msg: Message) {
         // Find the book that the order is reserving
+        console.log("OrderCreatedListener-Book: ", data)
+
         const book = await Book.findOne({ id: data.book.id });
 
         // If no book, throw error
@@ -19,7 +21,7 @@ export class OrderCreatedListener extends Listener<OrderCreatedEvent> {
         }
 
         // Mark the book as being reserved by setting its orderId property
-        book.set({
+        await book.set({
             orderId: data.id
         });
 
