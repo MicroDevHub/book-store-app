@@ -1,6 +1,7 @@
 # NodeJS + Next.js frontend SSR
 
-This is a small project using [NodeJS](https://nodejs.org/en/) powered frontend for the movie dataset using [Next.js](https://github.com/zeit/next.js/).
+This is a small project using [NodeJS](https://nodejs.org/en/) 
+powered frontend for the movie dataset using [Next.js](https://github.com/zeit/next.js/).
 
 ## Prerequisites
 
