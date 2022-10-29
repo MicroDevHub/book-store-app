@@ -31,7 +31,8 @@ we need each order's doc to have a reference to the Book model to get the necess
 which be contained in order (title, price, version).
 
 So to be able doing this, we will use Mongoose Ref/Population Feature
-(Population is the process of automatically replacing the specified paths in the document with document(s) from other collection(s). We may populate a single document, multiple documents, a plain object, multiple plain objects, or all objects returned from a query.)
+(Population is the process of automatically replacing the specified paths in the document with document(s) from other collection(s).
+We may populate a single document, multiple documents, a plain object, multiple plain objects, or all objects returned from a query.)
 
 ![alt text](../documents/assets/orders/mongoose-ref-population.png)
 

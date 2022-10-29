@@ -31,7 +31,8 @@ OrderCreatedListener: The listener event for Orders Create new.
 
 **PUBLISHER**
 
-ExpirationCompletePublisher: When the order is expired after the predefine time, the service will publish the expiration completed event to NATs.
+ExpirationCompletePublisher: When the order is expired after the predefine time, 
+the service will publish the expiration completed event to NATs.
 ![alt text](../documents/assets/events/expiration_complete-event.png)
 
 

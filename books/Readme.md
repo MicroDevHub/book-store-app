@@ -1,6 +1,6 @@
 # Book-Service
 
-This service will handle book creation and editing.
+This service will handle books creation and editing.
 
 ## 1. Starting On Local
 

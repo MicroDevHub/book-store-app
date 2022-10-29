@@ -17,10 +17,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Service-build
         run: cd expiration && npm install
 
       - name: Eslint
         run: cd expiration && npm run eslint
+
+      - name: Build and Deploy the Docker image
+        run: |
+          echo $DOCKER_USERNAME
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+          cd expiration && docker build -t huyhoang1001/expiration .
+          docker push huyhoang1001/expiration
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}

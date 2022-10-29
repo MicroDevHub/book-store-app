@@ -8,7 +8,7 @@ This service is using Nodejs version 16.x.x
 
 ```bash
 npm install
-### Testing
+### Eslint && Testing
 npm run eslint && npm run test
 ### Start
 npm run start

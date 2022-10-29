@@ -32,7 +32,7 @@ jobs:
       - name: Eslint && Unit testing
         run: cd auth && npm run eslint && npm run test:ci
 
-      - name: Build the Docker image
+      - name: Build and Deploy the Docker image
         run: |
           echo $DOCKER_USERNAME
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD

@@ -14,8 +14,6 @@ Get the code by either cloning this repository using git
 git clone https://github.com/Microservice-Fundamental/book-store-app.git
 ```
 
-
-
 Once downloaded, open the terminal in the project directory, and install dependencies with:
 
 ```
