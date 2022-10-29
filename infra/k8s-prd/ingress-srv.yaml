@@ -7,7 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   rules:
-    - host: bookstore-prd.com
+    - host: www.bookstore.monster
       http:
         paths:
           - path: /api/payments/?(.*)
