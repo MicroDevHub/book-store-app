@@ -27,7 +27,6 @@ jobs:
 
       - name: Build and Deploy the Docker image
         run: |
-          echo $DOCKER_USERNAME
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
           cd payments && docker build -t huyhoang1001/payments .
           docker push huyhoang1001/payments
