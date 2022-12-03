@@ -12,7 +12,7 @@ This is prototype for app
 
 ## Tech
 
-Bookstore app uses a number of open source projects to work properly:
+The bookstore web app uses several open source projects to function properly:
 
 - [React](https://reactjs.org/) - A JavaScript library for building user interfaces!
 - [NextJS](https://nextjs.org/) - A flexible React framework that gives you building blocks to create fast web applications.
@@ -43,7 +43,7 @@ Next.js is an open-source development framework built over Node.js that simplifi
 
 ![alt text](documents/assets/client/client-ssr.png)
 
-This is overview architecture when intergrating client in the system
+This is overview architecture when integrating client in the system
 
 ![alt text](documents/assets/client/client-ssr-overview.png)
 
@@ -101,13 +101,16 @@ https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/cre
 #### Ingress-nginx
 
 What is Ingress? 
-Ingress exposes HTTP and HTTPS routes from outside the cluster to services within the cluster. Traffic routing is controlled by rules defined on the Ingress resource.
+Ingress exposes HTTP and HTTPS routes from outside the cluster to services within the cluster. 
+Traffic routing is controlled by rules defined on the Ingress resource.
 
 Here is a simple example where an Ingress sends all its traffic to one Service:
 ![Ingress-ngix](documents/assets/infras/ingress.svg)
 
-An Ingress may be configured to give Services externally-reachable URLs, load balance traffic, terminate SSL / TLS, and offer name-based virtual hosting. 
-An Ingress controller is responsible for fulfilling the Ingress, usually with a load balancer, though it may also configure your edge router or additional frontends to help handle the traffic.
+An Ingress may be configured to give Services externally-reachable URLs, load balance traffic, 
+terminate SSL / TLS, and offer name-based virtual hosting. 
+An Ingress controller is responsible for fulfilling the Ingress, usually with a load balancer, 
+though it may also configure your edge router or additional frontends to help handle the traffic.
 
 ***
 ## Development
@@ -157,7 +160,10 @@ bookstore.com
 
 ***
 ## Documents
+These documents will guide, describe in detail each step as well as analyze the pros and cons
+to choose the right approach for each part of the process when we start building a new Microservice project.
 
+#### [Microservice Evernote-Link](https://www.evernote.com/shard/s725/sh/8f5ffdc4-653f-038d-0278-b7a0fa91f9cc/d1d13a6f7e6505e299582eb2a7cfa0bd)
 #### 1. [Authentication & Authorization In Microservice](./documents/docs/authen-author/jwt-vs-cookie.md)
 #### 2. [Continuous integration and continuous delivery](./documents/docs/CI_CD/overview.md)
 #### 3. [Error handling in microservice](./documents/docs/error-handler/error-handler.md)
