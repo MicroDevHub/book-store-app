@@ -14,11 +14,19 @@
 
 
 ## 1. Requirements for Our Auth Mechanism.
+### 1.1. Implies that the auth mechanism will tell us details about this person
+
 ![require-auth-1](../../assets/auth/require-auth-1.png)
+
+### 1.2. Implies that the auth mechanism needs to include authorization info
 
 ![require-auth-2](../../assets/auth/require-auth-2.png)
 
+### 1.3. Implies that the auth mechanism must have some built-in, super secure way of expiring after a period of time
+
 ![require-auth-3](../../assets/auth/require-auth-3.png)
+
+### 1.4. Implies that the auth mechanism must be easily understood by many languages and shouldn't require some kind of backing data store on the server
 
 ![require-auth-4](../../assets/auth/require-auth-4.png)
 
@@ -41,7 +49,7 @@ But the currently, Client is using SSR with React and NextJs, that why we also h
 
 ![issue-ssr](../../assets/auth/issue-ssr.png)
 
-With the SSR we need to know auth info with the first request, but the first requrest cannot be customized in any way in SSR.
+With the SSR we need to know auth info with the first request, but the first request cannot be customized in any way in SSR.
 
 
 ## 2. Solution and Implement.
