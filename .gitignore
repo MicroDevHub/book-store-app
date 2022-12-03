@@ -6,3 +6,10 @@
 /books/node_modules/
 node_modules
 .idea/
+/orders/build/
+/books/logs/
+/auth/logs/
+/expiration/logs/
+/orders/logs/
+/payments/logs/
+

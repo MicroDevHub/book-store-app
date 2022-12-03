@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: payments-config-env
+  namespace: default
+data:
+  PAYMENTS_MONGO_URL: mongodb://payments-mongo-srv/payments-db
+  NATS_URL: http://nats-srv:4222
+  NATS_CLUSTER_ID: books
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: payments-config-secret
+  namespace: default
+type: Opaque
+data:
+  JWT_KEY: YmFyCg==
+  STRIPE_KEY: YmFyCg==
+

@@ -1,6 +1,6 @@
 {
   "name": "@hh-bookstore/common",
-  "version": "1.0.12",
+  "version": "1.0.84",
   "description": "",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
@@ -9,8 +9,8 @@
   ],
   "scripts": {
     "clean": "del .\\build\\*",
-    "build": "npm run clean && tsc",
-    "publish": "npm run build && npm version patch && npm publish"
+    "build": "tsc",
+    "pub": "npm run build && npm version patch && npm publish"
   },
   "keywords": [],
   "author": "",
@@ -29,6 +29,7 @@
     "express": "^4.17.3",
     "express-validator": "^6.14.0",
     "jsonwebtoken": "^8.5.1",
-    "node-nats-streaming": "^0.3.2"
+    "node-nats-streaming": "^0.3.2",
+    "winston": "^3.7.2"
   }
 }

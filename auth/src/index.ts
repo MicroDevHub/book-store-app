@@ -1,1 +1,21 @@
-import mongoose from 'mongoose';import config from 'config';import { app } from './app';const start = async () => {    try {        await mongoose.connect(config.get('mongoUrl'));        console.log('Connected to MongoDb', config.get('mongoUrl'));        app.listen(config.get('port'), () => {            console.log(`Auth service is listening on port ${config.get('port')}!`);        });    } catch (err) {        console.log(err);    }};start();
+import { App } from "./app";
+import { Container } from "inversify";
+import { configure } from "./ioc";
+
+export const start = async () => {
+    try {
+        const container = new Container();
+        configure(container);
+        const app = new App(container);
+        await app.start();
+    } catch (err) {
+        console.error(err);
+    }
+};
+
+start();
+
+
+
+
+

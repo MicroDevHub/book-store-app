@@ -1,0 +1,42 @@
+{
+  "name": "expiration",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node-dev src/index.ts",
+    "eslint": "eslint --fix src/** -c .eslintrc.json --no-error-on-unmatched-pattern"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "setupFilesAfterEnv": [
+      "./src/test/setup.ts"
+    ]
+  },
+  "dependencies": {
+    "@hh-bookstore/common": "^1.0.83",
+    "@types/bull": "^3.15.9",
+    "@types/config": "^0.0.41",
+    "bull": "^4.8.5",
+    "config": "^3.3.7",
+    "node-nats-streaming": "^0.3.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.5.4"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/jest": "^28.1.1",
+    "@typescript-eslint/eslint-plugin": "^5.27.0",
+    "@typescript-eslint/parser": "^5.27.0",
+    "eslint": "^8.17.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.1",
+    "eslint-plugin-promise": "^6.0.0",
+    "jest": "^28.1.1",
+    "ts-jest": "^28.0.5"
+  }
+}

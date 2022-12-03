@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orders-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: orders
+  template:
+    metadata:
+      labels:
+        app: orders
+    spec:
+      containers:
+        - name: orders
+          image: huyhoang1001/orders
+          env:
+            # Define the environment variable
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NATS_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: orders-config-env
+                  key: NATS_URL
+            - name: NATS_CLUSTER_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: orders-config-env
+                  key: NATS_CLUSTER_ID
+            - name: ORDERS_MONGO_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: orders-config-env
+                  key: ORDERS_MONGO_URL
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: orders-config-secret
+                  key: JWT_KEY
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: orders-srv
+spec:
+  selector:
+    app: orders
+  ports:
+    - name: orders
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

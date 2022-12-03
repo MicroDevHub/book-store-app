@@ -15,6 +15,16 @@ import { Publisher } from "./events/base-publisher";
 import { Subjects } from "./events/subjects";
 import { BookCreatedEvent } from "./events/book-created-event";
 import { BookUpdatedEvent } from "./events/book-updated-event";
+import { OrderStatus } from "./types/order-status";
+import {
+    LoggerFactory,
+    ILoggerFactory,
+    ILogger
+} from "./lib/logger";
+import { OrderCreatedEvent } from "./events/order-created-event";
+import { PaymentCreatedEvent } from "./events/payment-created-event";
+import { OrderCancelledEvent } from "./events/order-cancelled-event";
+import { ExpirationCompleteEvent } from "./events/expiration-complete-event";
 
 export {
     BadRequestError,
@@ -33,6 +43,14 @@ export {
     Publisher,
     Subjects,
     BookCreatedEvent,
-    BookUpdatedEvent
+    BookUpdatedEvent,
+    OrderCreatedEvent,
+    OrderCancelledEvent,
+    PaymentCreatedEvent,
+    LoggerFactory,
+    ILoggerFactory,
+    ILogger,
+    OrderStatus,
+    ExpirationCompleteEvent
 }
 

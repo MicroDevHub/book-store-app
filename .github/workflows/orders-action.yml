@@ -1,0 +1,35 @@
+name: orders-service
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'orders/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'orders/**'
+
+  workflow_dispatch:
+
+jobs:
+  Orders-Service:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Service-build
+        run: cd orders && npm install
+
+      - name: Unit testing
+        run: cd orders && npm run test:ci
+
+      - name: Build and Deploy the Docker image
+        run: |
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+          cd orders && docker build -t huyhoang1001/orders .
+          docker push huyhoang1001/orders
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}

@@ -1,10 +1,10 @@
-![OpenAPI-Swagger](../../assets/OpenAPI-Swagger.png)
+![OpenAPI-Swagger](../../assets/swagger/OpenAPI-Swagger.png)
 
-## Express ES2017 REST API Boilerplate - Swagger module
+## Swagger module
 
-Section 1: Overview about Open API specification and Swagger ([this](./swagger-1-overview.md))
+[Section 1: Overview about Open API specification and Swagger](./swagger-1-openAPI.md)
 
-**Section 2: Open API specification** ([this](./swagger-2-openAPI.md))
+[**Section 2: Open API specification**](./swagger-2-openAPI.md)
 
 # Section 2: Open API specification
 
@@ -12,11 +12,11 @@ Section 1: Overview about Open API specification and Swagger ([this](./swagger-1
 
 1. Difference between Swagger version 2.0 vs Open API version 3.0 
 2. Basic Structure Swagger version 2.0
-3. Refer
+3. References.
 
 ## 1. Difference between Swagger version 2.0 vs Open API version 3.0 
 
-![Open-API-v2-Open-API-v3](../../assets/Open-API-v2-Open-API-v3.png)
+![Open-API-v2-Open-API-v3](../../assets/swagger/Open-API-v2-Open-API-v3.png)
 
 ### 1.1 Version
 
@@ -389,7 +389,7 @@ definitions:
       createdAt: "2020-04-09 04:32:23.472Z"
 ```
 
-## 3. Refer
+## 3. References
 
 - https://swagger.io/specification/v2/
 - https://blogs.sap.com/2018/01/05/open-api-spec-2.0-vs-3.0/

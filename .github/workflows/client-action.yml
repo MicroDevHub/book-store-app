@@ -1,0 +1,37 @@
+name: client-service
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'client/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'client/**'
+
+  workflow_dispatch:
+
+jobs:
+  Client-Service:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build and Deploy the Docker image
+        run: |
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+          cd client && docker build -t huyhoang1001/client .
+          docker push huyhoang1001/client
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
+      - uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      - name: Restart deployment
+        run: |
+          doctl kubernetes cluster kubeconfig save k8s-1-24-4-do-0-sfo3-1667041627367
+          kubectl rollout restart deployment client-depl

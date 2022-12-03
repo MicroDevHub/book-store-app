@@ -1,1 +1,1 @@
-{  "mongoUrl": "mongodb://127.0.0.1:27017/books-db",  "port": 3000,  "jwt_key": "hoang_key",  "natsConfig": {    "clusterId": "books",    "clientId": "book-client",    "url": "http://localhost:4222"  }}
+{  "mongoUrl": "mongodb://127.0.0.1:27017/books-db",  "port": 3000,  "jwt_key": "hoang_key",  "natsConfig": {    "clusterId": "books",    "clientId": "book-client",    "url": "http://localhost:4222",    "queueGroupName": "books-service"  }}

@@ -1,0 +1,146 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is Payments Service API project",
+    "version": "1.0.0",
+    "title": "Payments Service API",
+    "contact": {
+      "email": "huyhoangvo1001@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "schemes": ["http", "https"],
+  "host": "payments-service.internal.com:3000",
+  "basePath": "/api/payments",
+  "tags": [
+    {
+      "name": "Payments",
+      "description": "Everything about your action on product",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "payments-service.internal.com/api/payments/*"
+      }
+    }
+  ],
+  "paths" : {
+    "/:paymentId" : {
+      "get" : {
+        "tags": [
+          "Payments"
+        ],
+        "summary" : "Get list payment belong to userId",
+        "description": "Returns the payments if the payments is found and user is authorised",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "task object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Payment"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/BookResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RequestError"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/RequestError"
+            }
+          }
+        }
+      }
+    },
+    "/" : {
+      "get" : {
+        "tags": [
+          "Payments"
+        ],
+        "summary" : "Get lists book",
+        "description": "Returns all lists payments from database",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "responses": {
+          "201": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/UserResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/RequestError"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "PaymentResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "price": {
+          "type": "integer"
+        },
+        "userId": {
+          "type": "string"
+        }
+      }
+    },
+    "Payment": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer"
+        },
+        "expiresAt": {
+          "type": "date"
+        }
+      }
+    },
+    "RequestError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

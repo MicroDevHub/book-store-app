@@ -1,1 +1,0 @@
-const hello = () => {  return <h1>Happy New Year</h1>;};export default hello;

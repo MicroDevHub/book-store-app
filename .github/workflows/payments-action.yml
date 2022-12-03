@@ -1,0 +1,35 @@
+name: payments-service
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'payments/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'payments/**'
+
+  workflow_dispatch:
+
+jobs:
+  Payments-Service:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Service-build
+        run: cd payments && npm install
+
+      - name: Unit testing
+        run: cd payments && npm run test:ci
+
+      - name: Build and Deploy the Docker image
+        run: |
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+          cd payments && docker build -t huyhoang1001/payments .
+          docker push huyhoang1001/payments
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}

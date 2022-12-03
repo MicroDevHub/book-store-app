@@ -1,0 +1,35 @@
+name: books-service
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'books/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'books/**'
+
+  workflow_dispatch:
+
+jobs:
+  Books-Service:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build
+        run: cd books && npm install
+
+      - name: Eslint && Unit testing
+        run: cd books && npm run eslint && npm run test:ci
+
+      - name: Build and Deploy the Docker image
+        run: |
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+          cd books && docker build -t huyhoang1001/books .
+          docker push huyhoang1001/books
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}

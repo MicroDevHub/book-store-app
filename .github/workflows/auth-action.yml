@@ -1,0 +1,58 @@
+name: auth-service
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'auth/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'auth/**'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  Auth-Service:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Runs a single command using the runners shell
+      - name: Service-build
+        run: cd auth && npm install
+
+      - name: Eslint && Unit testing
+        run: cd auth && npm run eslint && npm run test:ci
+
+      - name: Build and Deploy the Docker image
+        run: |
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+          cd auth && docker build -t huyhoang1001/auth .
+          docker push huyhoang1001/auth
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
+      - uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      - name: Restart deployment
+        run: |
+          doctl kubernetes cluster kubeconfig save k8s-1-24-4-do-0-sfo3-1667041627367
+          kubectl rollout restart deployment auth-depl
+
+
+      # Runs a set of commands using the runners shell
+#      - name: Run a multi-line script
+#        run: |
+#          docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+#          echo Add other actions to build,
+#          echo test, and deploy your project.
