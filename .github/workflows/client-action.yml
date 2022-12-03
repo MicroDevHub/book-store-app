@@ -28,10 +28,10 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
-      - uses: digitalocean/action-doctl@v2
-        with:
-          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-      - name: Restart deployment
-        run: |
-          doctl kubernetes cluster kubeconfig save k8s-1-24-4-do-0-sfo3-1667041627367
-          kubectl rollout restart deployment client-depl
+#      - uses: digitalocean/action-doctl@v2
+#        with:
+#          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+#      - name: Restart deployment
+#        run: |
+#          doctl kubernetes cluster kubeconfig save k8s-1-24-4-do-0-sfo3-1667041627367
+#          kubectl rollout restart deployment client-depl
