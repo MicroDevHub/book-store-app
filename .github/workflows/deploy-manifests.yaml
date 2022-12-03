@@ -15,5 +15,5 @@ jobs:
       - uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-      - run: doctl kubernetes cluster kubeconfig save k8s-1-24-4-do-0-sfo3-1667041627367
+      - run: doctl kubernetes cluster kubeconfig save bookstore-monster
       - run: kubectl apply -f infra/k8s && kubectl apply -f infra/k8s-prd

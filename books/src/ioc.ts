@@ -1,4 +1,4 @@
-import { Container } from "inversify";
+import { Container, interfaces } from "inversify";
 import "reflect-metadata";
 import { IConfig } from "config";
 import * as config from "config";
@@ -17,6 +17,10 @@ export const configure = (container: Container): void => {
     container.bind<ILogger>("ILogger").toDynamicValue(
         () => container.get<ILoggerFactory>("ILoggerFactory")("Book").logger
     );
+    container.bind<string>('loggerDynamic').toDynamicValue((context: interfaces.Context) => {
+        const name = context.container.get('name') as string;
+        return name;
+    }).inRequestScope();
     // DB Connections
     container.bind<IMongodbConnection>("IMongodbConnection").to(MongodbConnection).inSingletonScope();
     container.bind<INatsConnection>("INatsConnection").to(NatsConnection).inSingletonScope();
