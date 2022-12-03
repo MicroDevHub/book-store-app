@@ -43,7 +43,7 @@ Next.js is an open-source development framework built over Node.js that simplifi
 
 ![alt text](documents/assets/client/client-ssr.png)
 
-This is overview architecture when intergrating client in the system
+This is overview architecture when integrating client in the system
 
 ![alt text](documents/assets/client/client-ssr-overview.png)
 
