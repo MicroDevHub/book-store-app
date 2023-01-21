@@ -51,7 +51,7 @@ describe("Create Routes", () => {
             .send({
                 bookId: "",
             })
-            .expect(400)
+            .expect(400);
 
         await request(server)
             .post("/api/orders")
@@ -59,8 +59,8 @@ describe("Create Routes", () => {
             .send({
                 bookId: 10
             })
-            .expect(400)
-    })
+            .expect(400);
+    });
 
     it("return an error if the book does not exit", async () => {
         const cookie = await global.getCookie();
@@ -141,4 +141,4 @@ describe("Create Routes", () => {
 
         expect(natsClient.client.publish).toHaveBeenCalled();
     });
-})
+});

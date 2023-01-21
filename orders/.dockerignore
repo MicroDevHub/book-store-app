@@ -1,1 +1,1 @@
-node_modules
+# Ignore everything*!node_modules!config!contract!build!package.json!index.js

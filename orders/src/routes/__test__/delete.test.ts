@@ -107,4 +107,4 @@ describe("Delete Routes", () => {
 
         expect(natsClient.client.publish).toHaveBeenCalled();
     });
-})
+});

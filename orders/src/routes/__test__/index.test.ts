@@ -19,7 +19,7 @@ const createBook = async () => {
         id: bookId,
         title: "tram nam khong quen",
         price: 20
-    })
+    });
     return await book.save();
 };
 
@@ -38,7 +38,7 @@ describe("Index Routes", () => {
             .send({
                 bookId: bookOne.id
             })
-            .expect(201)
+            .expect(201);
 
         // create on orders as User #2
         await request(server).post("/api/orders")
@@ -46,13 +46,13 @@ describe("Index Routes", () => {
             .send({
                 bookId: bookTwo.id
             })
-            .expect(201)
+            .expect(201);
         await request(server).post("/api/orders")
             .set("Cookie", userTwo)
             .send({
                 bookId: bookThree.id
             })
-            .expect(201)
+            .expect(201);
 
         // Make request to get orders for User #2
         const response = await request(server).get("/api/orders")
@@ -60,8 +60,8 @@ describe("Index Routes", () => {
             .send({
                 bookId: bookTwo.id
             })
-            .expect(200)
+            .expect(200);
 
-        expect(response.body.length).toEqual(2)
-    })
-})
+        expect(response.body.length).toEqual(2);
+    });
+});

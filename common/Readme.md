@@ -1,6 +1,6 @@
 # Common-Lib
 
-This is a npm package written by Nodejs, built with common features, used in services.
+This is an npm package written by Nodejs, built with common features, and used in services.
 
 ### Feature
 

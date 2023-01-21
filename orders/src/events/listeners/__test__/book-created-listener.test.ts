@@ -8,7 +8,7 @@ jest.setTimeout(50000);
 
 const setup = async () => {
     // create an instance of the listener
-    const listener = new BookCreatedListener(natsClient.client)
+    const listener = new BookCreatedListener(natsClient.client);
     // create a fake data event
     const data: BookCreatedEvent["data"] = {
         id: new mongoose.Types.ObjectId().toHexString(),
@@ -25,7 +25,7 @@ const setup = async () => {
     };
 
     return { listener, data, msg };
-}
+};
 
 describe("Book created listener", () => {
 
@@ -41,7 +41,7 @@ describe("Book created listener", () => {
         expect(book).toBeDefined();
         expect(book!.title).toEqual(data.title);
         expect(book!.price).toEqual(data.price);
-    })
+    });
 
     it("acks the message", async () => {
         const { listener, data, msg } = await setup();
@@ -51,5 +51,5 @@ describe("Book created listener", () => {
 
         // write assertions to make sure ack function is called
         expect(msg.ack).toHaveBeenCalled();
-    })
-})
+    });
+});

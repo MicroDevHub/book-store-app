@@ -19,7 +19,7 @@ const createBook = async () => {
         id: bookId,
         title: "tram nam khong quen",
         price: 20,
-    })
+    });
     return await book.save();
 };
 
@@ -42,13 +42,13 @@ describe("Get Routes", () => {
             .send({
                 bookId: book.id
             })
-            .expect(201)
+            .expect(201);
 
         await request(server).get(`/api/orders/${orders.id }`)
             .set("Cookie", userTwo)
             .send()
-            .expect(401)
-    })
+            .expect(401);
+    });
 
     it("returns the orders if the orders is found and is authorised", async () => {
         const cookie = await global.getCookie();
@@ -59,13 +59,13 @@ describe("Get Routes", () => {
             .send({
                 bookId: book.id
             })
-            .expect(201)
+            .expect(201);
 
         const { body: fetchedOrder } = await request(server).get(`/api/orders/${orders.id }`)
             .set("Cookie", cookie)
             .send()
-            .expect(200)
+            .expect(200);
 
         expect(fetchedOrder.id).toEqual(orders.id);
-    })
-})
+    });
+});

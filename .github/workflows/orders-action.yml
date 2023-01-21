@@ -25,6 +25,9 @@ jobs:
       - name: Unit testing
         run: cd orders && npm run test:ci
 
+      - name: Npm prune
+        run: cd orders && npm prune --omit=dev
+
       - name: Build and Deploy the Docker image
         run: |
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD

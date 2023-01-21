@@ -20,7 +20,7 @@ import { IMongodbConnection } from "./connections/mongodb-connection";
 import { INatsConnection } from "./connections/nats-connection";
 
 export class App {
-    private readonly serviceContract: any;
+    private readonly serviceContract: object;
     private readonly mongodbConnection: IMongodbConnection;
     private readonly natsConnection: INatsConnection;
     private readonly port: number;
